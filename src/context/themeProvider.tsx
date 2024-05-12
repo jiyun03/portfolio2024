@@ -1,4 +1,4 @@
-import { FC, createContext, useState, useContext, useCallback } from 'react'
+import { createContext, useState, useContext, useCallback } from 'react'
 import { ThemeProvider as StyledProvider } from 'styled-components'
 
 import { lightTheme, darkTheme } from '@/theme/theme'
@@ -9,13 +9,13 @@ interface ThemeContextProps {
   setThemeMode: (mode: string) => void
 }
 
-const ThemeContext = createContext<ThemeContextProps>({ themeMode: '', setThemeMode: () => {} })
-
 interface ThemeProviderProps {
   children: React.ReactNode
 }
 
-const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
+const ThemeContext = createContext<ThemeContextProps>({ themeMode: '', setThemeMode: () => {} })
+
+const ThemeProvider = ({ children }: ThemeProviderProps) => {
   let localTheme = 'light'
   if (typeof window !== 'undefined') {
     localTheme = localStorage.getItem('theme') || 'light'
