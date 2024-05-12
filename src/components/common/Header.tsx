@@ -1,8 +1,10 @@
 import { useState } from 'react'
-
 import Link from 'next/link'
 
-import LogoHeart from '/public/assets/icon/logo_heart.svg'
+import Hamburger from './Hamburger'
+import ThemeToggle from './ThemeToggle'
+
+import LogoHeart from '@/assets/icons/logo_heart.svg'
 import styled, { keyframes } from 'styled-components'
 
 export default function Header() {
@@ -18,7 +20,15 @@ export default function Header() {
           </span>
           <span>YUN</span>
         </Link>
-        <HeaderRight></HeaderRight>
+        <HeaderRight>
+          <ThemeToggle />
+          <Hamburger
+            show={{
+              menuShow: menuShow,
+              setMenuShow: setMenuShow,
+            }}
+          />
+        </HeaderRight>
       </div>
     </HeaderWrapper>
   )
@@ -56,7 +66,7 @@ const HeaderWrapper = styled.header`
     &__link {
       display: inline-block;
       padding: 10.8rem 32rem;
-      font-family: 'Montserrat', sans-serif;
+      font-family: 'Montserrat';
       font-size: 24rem;
       font-weight: 600;
       color: ${({ theme }) => theme.textColor};
