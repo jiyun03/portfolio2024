@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import styled, { css, StyleSheetManager } from 'styled-components'
 import isValidProp from '@emotion/is-prop-valid'
 
-type HamburgerProps = {
+interface HamburgerProps {
   show: {
     menuShow: boolean
     setMenuShow: Dispatch<SetStateAction<boolean>>
