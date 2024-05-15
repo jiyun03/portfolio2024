@@ -7,7 +7,6 @@
     "date": "2023.05 (5days)",
     "works": "10%",
     "company": "dfy",
-    "tag": "인터랙션|앵커",
     "type": "HTML|SCSS|JAVASCRIPT"
   },
   "health": {
@@ -18,7 +17,6 @@
     "date": "2022.08 (5days)",
     "works": "100%",
     "company": "individual",
-    "tag": "React|Firebase",
     "type": "React|SCSS|Firebase"
   },
   "ebc": {
@@ -29,7 +27,6 @@
     "date": "2022.05 (2weeks)",
     "works": "40%",
     "company": "dfy",
-    "tag": "인터랙션|다국어|블록체인",
     "type": "HTML|SCSS|JAVASCRIPT"
   },
   "comics": {
@@ -40,7 +37,6 @@
     "date": "2021.09 (3days)",
     "works": "100%",
     "company": "sprint",
-    "tag": "인터랙션|비디오|행사",
     "type": "PHP|CSS|JQUERY"
   },
   "eculture": {
@@ -51,7 +47,6 @@
     "date": "2021.08 (3days)",
     "works": "100%",
     "company": "sprint",
-    "tag": "회사소개",
     "type": "PHP|CSS|JQUERY"
   },
   "bebecard": {

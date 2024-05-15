@@ -9,7 +9,6 @@ interface Project {
   date: string
   works: string
   company: string
-  tag?: string
   type: string
 }
 
