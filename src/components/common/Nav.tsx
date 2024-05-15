@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
 import { StaticImageData } from 'next/image'
+import { useRouter } from 'next/router'
 
 import Container from './Container'
 
@@ -25,6 +26,7 @@ interface MenuItem {
 }
 
 export default function Nav({ show }: NavProps) {
+  const { route } = useRouter()
   const menuList: MenuItem[] = [
     {
       title: 'Point Portfolio',
@@ -58,7 +60,7 @@ export default function Nav({ show }: NavProps) {
                 <li key={idx} className="menu__item">
                   <Link
                     href={menu.link}
-                    className="menu__link"
+                    className={`menu__link ${route === `/${menu.link}` ? 's-active' : ''}`}
                     onClick={() => {
                       show.setMenuShow(false)
                     }}
@@ -106,9 +108,19 @@ const NavWrapper = styled.nav<{ show: boolean }>`
     `
     visibility: visible;
     opacity: 1;
-    .menu__item .menu__title {
-      height: 92rem;
-      opacity: 1;
+    .menu__item {
+      .menu__link {
+        &.s-active {
+          &:after {
+            width: 100%;
+            transition: width 1s 0.6s;
+          }
+        }
+      }
+      .menu__title {
+        height: 92rem;
+        opacity: 1;
+      }
     }
   `}
   ${(props) =>
@@ -163,15 +175,28 @@ const MenuWrapper = styled.ul`
       position: relative;
       display: inline-block;
       padding: 4.8rem 24rem;
+      &:after {
+      }
+      &.s-active {
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          width: 0;
+          bottom: 25rem;
+          width: 0;
+          height: 30rem;
+          background-color: ${({ theme }) => theme.pointColor2};
+          transform: skewX(-15deg);
+        }
+      }
       &:hover {
         .menu {
           &__title {
             transform: skewX(-15deg);
-            z-index: 2;
           }
           &__img {
             opacity: 1;
-            z-index: 1;
           }
         }
       }
@@ -185,6 +210,7 @@ const MenuWrapper = styled.ul`
       font-family: 'SaolDisplay';
       font-size: 76.8rem;
       line-height: 1.2;
+      z-index: 1;
       transition: height 1.2s cubic-bezier(0.345, 0, 0, 1), opacity 1.2s cubic-bezier(0.345, 0, 0, 1),
         transform 0.3s cubic-bezier(0.345, 0, 0, 1);
       ${({ theme }) => theme.md`
