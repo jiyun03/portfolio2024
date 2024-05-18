@@ -1,7 +1,7 @@
 import { useTheme } from '@/context/themeProvider'
 
-import IconThemeDark from '@/assets/icons/theme_dark.svg'
-import IconThemeLight from '@/assets/icons/theme_light.svg'
+import IconThemeDark from '/public/assets/icons/theme_dark.svg'
+import IconThemeLight from '/public/assets/icons/theme_light.svg'
 import styled, { css } from 'styled-components'
 import { animated, useTransition } from 'react-spring'
 

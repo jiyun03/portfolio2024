@@ -5,7 +5,7 @@ import Hamburger from './Hamburger'
 import ThemeToggle from './ThemeToggle'
 import Menu from './Nav'
 
-import LogoHeart from '@/assets/icons/logo_heart.svg'
+import LogoHeart from '/public/assets/icons/logo_heart.svg'
 import styled, { keyframes } from 'styled-components'
 
 export default function Header() {

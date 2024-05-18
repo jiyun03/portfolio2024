@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import Ratio from '@/components/common/Ratio'
 
-import ImgCog from '@/assets/icons/cog.svg'
+import ImgCog from '/public/assets/icons/cog.svg'
 import styled, { keyframes } from 'styled-components'
 
 interface ItemProps {
@@ -45,7 +45,7 @@ export default function ListsItem({ name, item }: ItemProps) {
     return (
       <>
         <div className="lists__img">
-          <Ratio ratio="3_2" src={`/assets/portfolio/${name}/${name}-main.jpg`} />
+          <Ratio ratio="3_2" src={`/assets/img/portfolio/${name}/${name}-main.jpg`} />
           {item.status === 'off' && (
             <DimWrapper className="lists__dim-wrap">
               <div className="lists__dim">

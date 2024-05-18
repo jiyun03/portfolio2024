@@ -1,14 +1,10 @@
 import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
-import { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import Container from './Container'
 
-import imgMenuPoint from '@/assets/img/common/menu_point.jpg'
-import imgMenuPortfolio from '@/assets/img/common/menu_portfolio.jpg'
-import imgMenuAbout from '@/assets/img/common/menu_about.jpg'
-import imgMenuContact from '@/assets/img/common/menu_contact.jpg'
 import styled, { StyleSheetManager } from 'styled-components'
 import isValidProp from '@emotion/is-prop-valid'
 
@@ -22,7 +18,7 @@ interface NavProps {
 interface MenuItem {
   title: string
   link: string
-  img: StaticImageData
+  img: string
 }
 
 export default function Nav({ show }: NavProps) {
@@ -31,22 +27,22 @@ export default function Nav({ show }: NavProps) {
     {
       title: 'Point Portfolio',
       link: 'point',
-      img: imgMenuPoint,
+      img: '/assets/img/common/menu_point.jpg',
     },
     {
       title: 'Portfolio',
       link: 'portfolio',
-      img: imgMenuPortfolio,
+      img: '/assets/img/common/menu_portfolio.jpg',
     },
     {
       title: 'About',
       link: 'about',
-      img: imgMenuAbout,
+      img: '/assets/img/common/menu_about.jpg',
     },
     {
       title: 'Contact',
       link: 'contact',
-      img: imgMenuContact,
+      img: '/assets/img/common/menu_contact.jpg',
     },
   ]
 
@@ -69,7 +65,7 @@ export default function Nav({ show }: NavProps) {
                     <div
                       className="menu__img"
                       style={{
-                        background: `url('${menu.img.src}') no-repeat center`,
+                        background: `url('${menu.img}') no-repeat center`,
                         backgroundSize: 'cover',
                       }}
                     />
