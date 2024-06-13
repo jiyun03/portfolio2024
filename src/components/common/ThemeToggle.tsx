@@ -1,9 +1,9 @@
 import { useTheme } from '@/context/themeProvider'
 
-import IconThemeDark from '/public/assets/icons/theme_dark.svg'
-import IconThemeLight from '/public/assets/icons/theme_light.svg'
 import styled, { css } from 'styled-components'
 import { animated, useTransition } from 'react-spring'
+import IC_IconThemeDark from '/public/assets/icons/theme_dark.svg'
+import IC_IconThemeLight from '/public/assets/icons/theme_light.svg'
 
 export default function ThemeToggle() {
   const [themeMode, toggleTheme] = useTheme()
@@ -30,18 +30,18 @@ export default function ThemeToggle() {
   })
 
   return (
-    <ToggleButton onClick={toggleTheme} mode={themeMode}>
+    <ToggleButton $mode={themeMode} onClick={toggleTheme}>
       {transitions((style: any, item: boolean) =>
         item ? (
           <Positioner>
             <AnimatedWrapper style={style}>
-              <IconThemeDark />
+              <IC_IconThemeDark />
             </AnimatedWrapper>
           </Positioner>
         ) : (
           <Positioner>
             <AnimatedWrapper style={style}>
-              <IconThemeLight />
+              <IC_IconThemeLight />
             </AnimatedWrapper>
           </Positioner>
         )
@@ -50,7 +50,7 @@ export default function ThemeToggle() {
   )
 }
 
-const ToggleButton = styled.div<{ mode: string }>`
+const ToggleButton = styled.div<{ $mode: string }>`
   position: relative;
   padding: 12.8rem;
   width: 23rem;
@@ -67,8 +67,8 @@ const ToggleButton = styled.div<{ mode: string }>`
     width: 23rem;
     height: 23rem;
   }
-  ${(props) =>
-    props.mode === 'dark' &&
+  ${({ $mode }) =>
+    $mode === 'dark' &&
     css`
       svg {
         width: 18rem;

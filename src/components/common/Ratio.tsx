@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 import styled from 'styled-components'
 
 interface RatioProps {
@@ -7,19 +9,22 @@ interface RatioProps {
 
 export default function Ratio({ ratio, src }: RatioProps) {
   return (
-    <RatioWrapper ratio={ratio}>
-      <div
-        className="ratio__content"
+    <RatioWrapper $ratio={ratio}>
+      <Image
+        src={src}
         style={{
-          background: `url('${src}') no-repeat center`,
-          backgroundSize: 'cover',
+          objectFit: 'cover',
+          objectPosition: 'center',
         }}
+        fill
+        sizes="100%"
+        alt="이미지"
       />
     </RatioWrapper>
   )
 }
 
-const RatioWrapper = styled.div<{ ratio: string }>`
+const RatioWrapper = styled.div<{ $ratio: string }>`
   display: block;
   position: relative;
   width: 100%;
@@ -27,24 +32,15 @@ const RatioWrapper = styled.div<{ ratio: string }>`
   &:before {
     content: '';
     display: block;
-    ${(props) =>
-      props.ratio === '3_2' &&
+    ${({ $ratio }) =>
+      $ratio === '3_2' &&
       `
       padding-top: 66.66%
     `}
-    ${(props) =>
-      props.ratio === '1_1' &&
+    ${({ $ratio }) =>
+      $ratio === '1_1' &&
       `
       padding-top: 100%
     `}
-  }
-  .ratio {
-    &__content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-    }
   }
 `

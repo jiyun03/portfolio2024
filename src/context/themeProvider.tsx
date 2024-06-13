@@ -1,8 +1,9 @@
 import { createContext, useState, useContext, useCallback, useEffect } from 'react'
-import { ThemeProvider as StyledProvider } from 'styled-components'
 
 import { lightTheme, darkTheme } from '@/theme/theme'
 import media from '@/theme/media'
+
+import { ThemeProvider as StyledProvider } from 'styled-components'
 
 interface ThemeContextProps {
   themeMode: string

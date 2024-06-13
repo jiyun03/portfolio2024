@@ -1,12 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 
 import Hamburger from './Hamburger'
 import ThemeToggle from './ThemeToggle'
 import Menu from './Nav'
 
-import LogoHeart from '/public/assets/icons/logo_heart.svg'
 import styled, { keyframes } from 'styled-components'
+import IC_LogoHeart from '/public/assets/icons/logo_heart.svg'
 
 export default function Header() {
   const [menuShow, setMenuShow] = useState<boolean>(false)
@@ -17,7 +17,7 @@ export default function Header() {
         <Link href="/" className="header__link">
           <span>JI</span>
           <span className="heart">
-            <LogoHeart />
+            <IC_LogoHeart />
           </span>
           <span>YUN</span>
         </Link>

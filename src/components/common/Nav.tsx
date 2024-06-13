@@ -5,8 +5,7 @@ import { useRouter } from 'next/router'
 
 import Container from './Container'
 
-import styled, { StyleSheetManager } from 'styled-components'
-import isValidProp from '@emotion/is-prop-valid'
+import styled from 'styled-components'
 
 interface NavProps {
   show: {
@@ -47,40 +46,44 @@ export default function Nav({ show }: NavProps) {
   ]
 
   return (
-    <StyleSheetManager shouldForwardProp={(propName) => isValidProp(propName)}>
-      <NavWrapper show={show.menuShow}>
-        <Container type="view">
-          <MenuWrapper>
-            {menuList.map((menu, idx) => {
-              return (
-                <li key={idx} className="menu__item">
-                  <Link
-                    href={menu.link}
-                    className={`menu__link ${route === `/${menu.link}` ? 's-active' : ''}`}
-                    onClick={() => {
-                      show.setMenuShow(false)
-                    }}
-                  >
-                    <span className="menu__title">{menu.title}</span>
-                    <div
-                      className="menu__img"
+    <NavWrapper $show={show.menuShow}>
+      <Container type="view">
+        <MenuWrapper>
+          {menuList.map((menu, idx) => {
+            return (
+              <li key={idx} className="menu__item">
+                <Link
+                  href={menu.link}
+                  className={`menu__link ${route === `/${menu.link}` ? 's-active' : ''}`}
+                  onClick={() => {
+                    show.setMenuShow(false)
+                  }}
+                >
+                  <span className="menu__title">{menu.title}</span>
+                  <div className="menu__img">
+                    <Image
+                      src={menu.img}
                       style={{
-                        background: `url('${menu.img}') no-repeat center`,
-                        backgroundSize: 'cover',
+                        objectFit: 'cover',
+                        objectPosition: 'center',
                       }}
+                      priority={false}
+                      fill
+                      sizes="100%"
+                      alt={`${menu.title} 메뉴 이미지`}
                     />
-                  </Link>
-                </li>
-              )
-            })}
-          </MenuWrapper>
-        </Container>
-      </NavWrapper>
-    </StyleSheetManager>
+                  </div>
+                </Link>
+              </li>
+            )
+          })}
+        </MenuWrapper>
+      </Container>
+    </NavWrapper>
   )
 }
 
-const NavWrapper = styled.nav<{ show: boolean }>`
+const NavWrapper = styled.nav<{ $show: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -99,8 +102,8 @@ const NavWrapper = styled.nav<{ show: boolean }>`
   [type='view'] {
     margin-top: 0;
   }
-  ${(props) =>
-    props.show &&
+  ${({ $show }) =>
+    $show &&
     `
     visibility: visible;
     opacity: 1;
@@ -119,9 +122,9 @@ const NavWrapper = styled.nav<{ show: boolean }>`
       }
     }
   `}
-  ${(props) =>
-    props.show &&
-    props.theme.md`
+  ${({ $show, theme }) =>
+    $show &&
+    theme.md`
     .menu__item {
       .menu__title {
         height: 57.6rem;

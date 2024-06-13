@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from 'react'
 
-import styled, { css, StyleSheetManager } from 'styled-components'
-import isValidProp from '@emotion/is-prop-valid'
+import styled from 'styled-components'
 
 interface HamburgerProps {
   show: {
@@ -12,24 +11,22 @@ interface HamburgerProps {
 
 export default function Hamburger({ show }: HamburgerProps) {
   return (
-    <StyleSheetManager shouldForwardProp={(propName) => isValidProp(propName)}>
-      <HamburgerWrapper
-        show={show.menuShow || false}
-        onClick={() => {
-          show.setMenuShow(!show.menuShow)
-        }}
-      >
-        <div className="hamburger">
-          <div className="hamburger__item top"></div>
-          <div className="hamburger__item middle"></div>
-          <div className="hamburger__item bottom"></div>
-        </div>
-      </HamburgerWrapper>
-    </StyleSheetManager>
+    <HamburgerWrapper
+      $show={show.menuShow || false}
+      onClick={() => {
+        show.setMenuShow(!show.menuShow)
+      }}
+    >
+      <button className="hamburger">
+        <span className="hamburger__item top"></span>
+        <span className="hamburger__item middle"></span>
+        <span className="hamburger__item bottom"></span>
+      </button>
+    </HamburgerWrapper>
   )
 }
 
-const HamburgerWrapper = styled.div<{ show: boolean }>`
+const HamburgerWrapper = styled.div<{ $show: boolean }>`
   position: relative;
   width: 56rem;
   height: 60rem;
@@ -38,6 +35,7 @@ const HamburgerWrapper = styled.div<{ show: boolean }>`
   z-index: 1000;
   box-sizing: border-box;
   .hamburger {
+    display: block;
     position: relative;
     width: 100%;
     height: 100%;
@@ -49,7 +47,6 @@ const HamburgerWrapper = styled.div<{ show: boolean }>`
       background-color: ${({ theme }) => theme.textColor};
       border-radius: 15px;
       transition: top 0.25s 0.25s, transform 0.25s, width 0.25s, opacity 0.25s;
-      // transition: top 0.25s 0.25s, transform 0.25s, width 0.25s, opacity 0.25s, background-color 0.3s 0.2s;
       transform-origin: center;
       &.top {
         top: 0;
@@ -74,9 +71,9 @@ const HamburgerWrapper = styled.div<{ show: boolean }>`
     }
   }
 
-  ${(props) =>
-    props.show &&
-    css`
+  ${({ $show }) =>
+    $show &&
+    `
       .hamburger {
         .hamburger__item {
           top: calc(50% - 2px);

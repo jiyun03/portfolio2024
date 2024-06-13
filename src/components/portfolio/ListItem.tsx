@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import Ratio from '@/components/common/Ratio'
 
-import ImgCog from '/public/assets/icons/cog.svg'
 import styled, { keyframes } from 'styled-components'
+import IC_Cog from '/public/assets/icons/cog.svg'
 
 interface ItemProps {
   name: string
@@ -18,8 +18,6 @@ interface ItemProps {
     type: string
   }
 }
-
-const path = process.env.PUBLIC_URL
 
 export default function ListsItem({ name, item }: ItemProps) {
   const Content = () => {
@@ -49,7 +47,7 @@ export default function ListsItem({ name, item }: ItemProps) {
           {item.status === 'off' && (
             <DimWrapper className="lists__dim-wrap">
               <div className="lists__dim">
-                <ImgCog />
+                <IC_Cog />
                 <span className="lists__dim-title">접속불가</span>
               </div>
             </DimWrapper>

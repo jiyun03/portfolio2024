@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
 export const GlobalStyle = createGlobalStyle`
+  ${reset}
   // Montserrat
   @font-face {
     font-family: 'Montserrat';
@@ -112,5 +114,6 @@ export const GlobalStyle = createGlobalStyle`
   button {
     background: none;
     border: none;
+    cursor: pointer;
   }
 `

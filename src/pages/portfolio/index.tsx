@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react'
 
+import Container from '@/components/common/Container'
 import ListsItem from '@/components/portfolio/ListItem'
+
+import styled from 'styled-components'
 
 interface PortfolioItem {
   [key: string]: {
@@ -29,11 +32,51 @@ export default function Index() {
   }, [])
 
   return (
-    <div>
-      {/* {JSON.values(lists).length > 0 ? lists : ''} */}
-      {Object.entries(lists).map((item) => {
-        return <ListsItem key={item[0]} name={item[0]} item={item[1]} />
-      })}
-    </div>
+    <Container>
+      <ListsWrapper>
+        <div className="lists">
+          <div className="lists-wrap">
+            {/* {JSON.values(lists).length > 0 ? lists : ''} */}
+            {Object.entries(lists).map((item) => {
+              return <ListsItem key={item[0]} name={item[0]} item={item[1]} />
+            })}
+          </div>
+        </div>
+      </ListsWrapper>
+    </Container>
   )
 }
+
+const ListsWrapper = styled.div`
+  margin-bottom: 70rem;
+  ${({ theme }) => theme.sm`
+    margin-bottom: 40rem;
+  `}
+  .lists {
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+    }
+    &__item {
+      flex: 0 0 33.3333%;
+      max-width: 33.3333%;
+      padding: 0 10px;
+      ${({ theme }) => theme.lg`
+        flex: 0 0 50%;
+        max-width: 50%;
+      `}
+      ${({ theme }) => theme.sm`
+        flex: 0 0 100%;
+        max-width: 100%;
+      `}
+    }
+    &__none {
+      svg {
+        display: block;
+        width: 110rem;
+        margin: auto;
+      }
+    }
+  }
+`
