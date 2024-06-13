@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import Container from '@/components/common/Container'
+import Title from '@/components/common/Title'
 import ListsItem from '@/components/portfolio/ListItem'
 
 import styled from 'styled-components'
@@ -33,6 +34,12 @@ export default function Index() {
 
   return (
     <Container>
+      <Title
+        content={{
+          title: '프로젝트 목록',
+          subtitle: '재직중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
+        }}
+      />
       <ListsWrapper>
         <div className="lists">
           <div className="lists-wrap">
