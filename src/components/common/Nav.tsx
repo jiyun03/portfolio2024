@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { enableBodyScroll } from 'body-scroll-lock'
 
 import Container from './Container'
 
@@ -57,6 +58,7 @@ export default function Nav({ show }: NavProps) {
                   className={`menu__link ${route === `/${menu.link}` ? 's-active' : ''}`}
                   onClick={() => {
                     show.setMenuShow(false)
+                    enableBodyScroll(document.querySelector('body') as HTMLElement)
                   }}
                 >
                   <span className="menu__title">{menu.title}</span>

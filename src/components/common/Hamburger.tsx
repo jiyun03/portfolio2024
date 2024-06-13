@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 import styled from 'styled-components'
 
@@ -14,7 +15,14 @@ export default function Hamburger({ show }: HamburgerProps) {
     <HamburgerWrapper
       $show={show.menuShow || false}
       onClick={() => {
+        const scrollTargetElement = document.querySelector('body')
+
         show.setMenuShow(!show.menuShow)
+        if (show.menuShow) {
+          enableBodyScroll(scrollTargetElement as HTMLElement)
+        } else {
+          disableBodyScroll(scrollTargetElement as HTMLElement)
+        }
       }}
     >
       <button className="hamburger">
