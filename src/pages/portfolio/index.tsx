@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 import Container from '@/components/common/Container'
@@ -190,23 +190,25 @@ export default function Index() {
   }, [lists])
 
   // [float] scroll
-  let floatHeight: number
-  let floatBottom: number
-  const floatScroll = (): void => {
-    if (window.scrollY > floatBottom + 25) {
-      setFloat(true)
-    } else {
-      setFloat(false)
-      setFloatClick(false)
+  const floatScroll = useCallback((): void => {
+    if (floatRef.current && floatRef.current.firstElementChild instanceof HTMLElement) {
+      const floatHeight = floatRef.current.firstElementChild.offsetHeight
+      const floatBottom = floatRef.current.offsetTop + floatHeight
+      if (window.scrollY > floatBottom + 25) {
+        setFloat(true)
+      } else {
+        setFloat(false)
+        setFloatClick(false)
+      }
     }
-  }
+  }, [])
 
   const floatClickState = (): void => {
     setFloatClick(!floatClick)
   }
 
   // [resize]
-  const resizeSetting = (): void => {
+  const resizeSetting = useCallback((): void => {
     // view 설정
     if (window.innerWidth <= 600) {
       setIsMobile(true)
@@ -217,14 +219,13 @@ export default function Index() {
     // float
     setFloatClick(false)
     if (floatRef.current && floatRef.current.firstElementChild instanceof HTMLElement) {
-      floatHeight = floatRef.current.firstElementChild.offsetHeight
-      floatBottom = floatRef.current.offsetTop + floatHeight
+      const floatHeight = floatRef.current.firstElementChild.offsetHeight
       floatRef.current!.style.height = `${floatHeight}px`
     }
-  }
+  }, [])
 
+  // [리스트] 리스트 json 데이터 불러오기
   useEffect(() => {
-    // [리스트] 리스트 json 데이터 불러오기
     const dataFetch = async (): Promise<void> => {
       const response = await fetch('/api/portfolio')
       const portfolioLists = await response.json()
@@ -232,18 +233,17 @@ export default function Index() {
       await setListsLoading(false)
     }
     dataFetch()
+  }, [])
 
-    // [float] scroll, resize
-    setTimeout(() => {
-      resizeSetting()
-    }, 500)
+  // [float] scroll, resize
+  useEffect(() => {
     window.addEventListener('scroll', floatScroll)
     window.addEventListener('resize', resizeSetting)
     return () => {
       window.removeEventListener('scroll', floatScroll)
       window.removeEventListener('resize', resizeSetting)
     }
-  }, [])
+  }, [floatScroll, resizeSetting])
 
   useEffect(() => {
     if (floatClick && floatRef.current) {
