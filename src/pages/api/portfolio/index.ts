@@ -3,6 +3,7 @@ import jsonFile from './portfolio.json'
 
 interface Project {
   title: string
+  name: string
   status: string
   link: string
   subtitle: string

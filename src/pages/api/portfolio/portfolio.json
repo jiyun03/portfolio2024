@@ -1,9 +1,10 @@
 {
   "two": {
     "title": "TWO ZONE",
+    "name": "two",
     "status": "on",
-    "link": "",
-    "subtitle": "",
+    "link": "https://two-zone.pages.dev/",
+    "subtitle": "TWO ZONE 소개 사이트로 REACTING 섹션 구현과 네비게이션 등의 전체적인 보수 작업을 진행했습니다. ScrollTrigger와 Lottie.js를 사용해 REACTING 섹션을 구현하였으며 초기에는 Canvas를 사용해 인터렉션을 구현하였으나 디자인 측 요청으로 인해 Lottie.js를 사용하는 것으로 수정하게되었습니다. Canvas를 통해 작업한 결과물이 흡족하여(?) 조금 아쉬웠지만 Lottie.js에 대한 경험을 해볼 수 있었던 프로젝트였습니다.",
     "date": "2023.05 (5days)",
     "works": "10%",
     "company": "dfy",
@@ -11,6 +12,7 @@
   },
   "health": {
     "title": "[Toy] 나의 건강일지",
+    "name": "health",
     "status": "on",
     "link": "https://outgoing-manager-a91.notion.site/Health-5c669bcaef6e47c3bb398696383298ba",
     "subtitle": "React를 사용한 토이 프로젝트입니다. 기획, 디자인, 개발을 혼자 진행하여 React 라이브러리를 도입하고 익숙해지는 것에 중점을 둔 프로젝트입니다.",
@@ -19,8 +21,20 @@
     "company": "individual",
     "type": "React|SCSS|Firebase"
   },
+  "kids": {
+    "title": "아이들나라",
+    "name": "kids",
+    "status": "on",
+    "link": "https://kid-3fb.pages.dev/",
+    "subtitle": "LG U+ 아이들나라의 컨텐츠를 소개하고 이용권을 결제 할 수 있는 사이트입니다. 콘텐츠 맛보기, 요금제, 소식, 이벤트, 자주 묻는 질문, 로그인, 회원가입 등의 대부분의 페이지 작업을 진행했습니다. Handlebars.js를 사용하여 레이아웃을 컴포넌트 단위로 관리할 수 있었으며 하나의 컴포넌트를 여러 타입으로 분기해 처리해야했으므로 css가 꼬이지 않게 유의하며 작업했습니다. 스크립트 또한 모듈로 묶어 공통적으로 사용할 수 있게 작업을 진행한 프로젝트 였습니다.",
+    "date": "2022.06 (2months)",
+    "works": "70%",
+    "company": "dfy",
+    "type": "HTML|SCSS|JAVASCRIPT"
+  },
   "ebc": {
     "title": "엔터프라이즈 블록체인",
+    "name": "ebc",
     "status": "on",
     "link": "https://www.enterpriseblockchain.io",
     "subtitle": "엔터프라이즈 블록체인 소개 사이트로 스크롤 인터랙션이 주로 되어있는 사이트 입니다. 다국어 사이트이며 Scradar.js의 학습을 심화시킬 수 있었습니다.",
@@ -31,9 +45,10 @@
   },
   "comics": {
     "title": "K-코믹스 행사",
+    "name": "comics",
     "status": "off",
     "link": "https://kcomics-eu.kr",
-    "subtitle": "우리나라 코믹스&애니메이션 행사의 소개 사이트로 행사가 해외에서 진행되기 때문에 영문으로 구성되어 있는 사이트입니다. 저는 90%의 퍼블리싱을 진행했습니다.",
+    "subtitle": "우리나라 코믹스&애니메이션 행사의 소개 사이트로 행사가 해외에서 진행되기 때문에 영문으로 구성되어 있는 사이트입니다. 저는 전체 퍼블리싱을 맡아 프로젝트를 진행했습니다.",
     "date": "2021.09 (3days)",
     "works": "100%",
     "company": "sprint",
@@ -41,6 +56,7 @@
   },
   "eculture": {
     "title": "이랜드 문화재단",
+    "name": "eculture",
     "status": "on",
     "link": "https://elandculture.com",
     "subtitle": "이랜드 문화재단 소개 사이트로 간단한 레이아웃과 게시판으로 구성된 사이트이며 전체 퍼블리싱을 맡아 프로젝트를 진행했습니다.",
@@ -51,6 +67,7 @@
   },
   "bebecard": {
     "title": "베베카드",
+    "name": "bebecard",
     "status": "off",
     "link": "https://bebecard.co.kr",
     "subtitle": "카드 이벤트 사이트입니다. 이벤트 신청 form과 마이페이지에서 이를 확인 할 수 있는 기능이 주를 사이트로 전체 퍼블리싱을 맡아 진행한 프로젝트입니다.",
@@ -61,6 +78,7 @@
   },
   "hoho": {
     "title": "호호반점",
+    "name": "hoho",
     "status": "on",
     "link": "https://www.hohobanjum.co.kr",
     "subtitle": "호호반점 소개 사이트로 창업문의 form 기능과 모바일에서 사이드 네비게이션 등의 편의성에 집중한 사이트입니다.",
@@ -71,6 +89,7 @@
   },
   "ecross": {
     "title": "이크로스",
+    "name": "ecross",
     "status": "off",
     "link": "https://e-cross.kr",
     "subtitle": "이크로스의 회사 소개 사이트입니다. 필터링 되는 게시판 데이터가 주요 기능으로 이루어져 있으며 모든 퍼블리싱을 혼자 진행한 프로젝트입니다.",
@@ -81,6 +100,7 @@
   },
   "choun": {
     "title": "이춘환 화백 사이트",
+    "name": "choun",
     "status": "on",
     "link": "https://chounhwan.com",
     "subtitle": "이춘환 화백의 작품 소개 사이트입니다. 서정아트센터 프로젝트와 함께 진행했으며 100% 혼자 진행한 프로젝트입니다.",
@@ -91,6 +111,7 @@
   },
   "animal": {
     "title": "코니엔 (웹앱)",
+    "name": "animal",
     "status": "on",
     "link": "http://animal.bocce.go-sprint.co.kr",
     "subtitle": "애완동물 활동 기록과 사료 추천을 주요 기능으로 하는 앱입니다. 60% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -101,6 +122,7 @@
   },
   "welcome": {
     "title": "웰컴농장",
+    "name": "welcome",
     "status": "off",
     "link": "https://welcomefarm.co.kr",
     "subtitle": "웰컴농장은 함양군에서 실시하는 체험농장 사이트로 농장 신청과 분기마다 산양삼의 성장을 마이페이지에서 확인할 수 있는 기능이 핵심인 사이트입니다. 해당 기능과 50% 정도의 퍼블리싱을 맡아 작업했습니다.​",
@@ -111,6 +133,7 @@
   },
   "tour": {
     "title": "항노화 투어",
+    "name": "tour",
     "status": "off",
     "link": "https://hamyangtour.co.kr",
     "subtitle": "항노화 투어는 함양군에서 실시하는 함양산삼항노화​ 투어 소개, 신청이 주를 이루어져 있는 사이트입니다. 50% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -121,6 +144,7 @@
   },
   "genuine": {
     "title": "제뉴인리서치",
+    "name": "genuine",
     "status": "on",
     "link": "http://genuineresearch.org",
     "subtitle": "제뉴인리서치 소개 사이트로 여러 번의 수정 끝에 컨펌이 난 프로젝트였어서 기억에 남는 프로젝트입니다.",
@@ -131,6 +155,7 @@
   },
   "startup": {
     "title": "스타트업게이트",
+    "name": "startup",
     "status": "on",
     "link": "https://startupgate.co.kr",
     "subtitle": "창업을 시작하는 사람들을 타켓으로 하는 사이트로, 미션을 달성하고 달성률을 확인할 수 있는 기능이 주 기능을 이루는 사이트입니다. 90% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -141,6 +166,7 @@
   },
   "eversky": {
     "title": "웅진 애버스카이",
+    "name": "eversky",
     "status": "off",
     "link": "http://eversky.archery.go-sprint.co.kr",
     "subtitle": "웅진 애버스카이 소개 사이트로 Scrollmagic.js를 많이 활용한 사이트입니다. 50% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -151,6 +177,7 @@
   },
   "itone": {
     "title": "아이티원",
+    "name": "itone",
     "status": "off",
     "link": "https://www.it1.kr/",
     "subtitle": "아이티원이 제공하는 유/무선 대리점 안내 사이트로 전체적인 퍼블리싱을 맡아 작업했습니다.",
@@ -161,6 +188,7 @@
   },
   "dalba": {
     "title": "달바",
+    "name": "dalba",
     "status": "off",
     "link": "http://dalba.ex2.go-sprint.co.kr",
     "subtitle": "화장품 브랜드 달바의 신규 화장품 이벤트 사이트로 50% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -171,6 +199,7 @@
   },
   "bbb": {
     "title": "바자 베러 뷰티",
+    "name": "bbb",
     "status": "on",
     "link": "http://bbb.one-page.co.kr",
     "subtitle": "화장품 브랜드 하퍼스 바자의 신규 화장품 이벤트 사이트로 메인에 유튜브 영상이 임베디드 되어 있으며 모든 퍼블리싱을 혼자 진행한 프로젝트입니다.",
@@ -181,6 +210,7 @@
   },
   "arkive": {
     "title": "아카이브",
+    "name": "arkive",
     "status": "off",
     "link": "https://arkive.kr",
     "subtitle": "아카이브는 해외 브랜드 쇼핑몰로 상품 리스트인 스토어와, sns의 성격을 갖는 스퀘어 부분으로 나누어져 있는 것이 특징인 프로젝트였습니다. 여러 번의 수정이 진행되어 기억에 남으며 50% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -191,6 +221,7 @@
   },
   "bluewalnut": {
     "title": "블루월넛",
+    "name": "bluewalnut",
     "status": "on",
     "link": "https://bluewalnut.co.kr/",
     "subtitle": "블루월넛은 현대카드의 자회사로 결제 모듈 설치 섹션이 주 기능을 이루는 사이트입니다. 80% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -201,6 +232,7 @@
   },
   "jeongdong": {
     "title": "정동극장",
+    "name": "jeongdong",
     "status": "off",
     "link": "http://jeongdong.one-page.co.kr/",
     "subtitle": "정동극장 소개 사이트로 일반적인 섹션과 게시판으로 이루어져 있는 사이트이며 50% 정도의 퍼블리싱을 맡아 작업했습니다.",
@@ -211,6 +243,7 @@
   },
   "lassele": {
     "title": "라셀르",
+    "name": "lassele",
     "status": "on",
     "link": "https://lassele.com/",
     "subtitle": "라셀르 브랜드 사이트로 퍼블리셔로써 처음으로 진행한 프로젝트였습니다. 맞춤 상품이 특징인 사이트이며 80% 정도의 퍼블리싱을 맡아 작업했습니다.",

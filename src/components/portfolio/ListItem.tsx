@@ -6,9 +6,9 @@ import styled, { keyframes } from 'styled-components'
 import IC_Cog from '/public/assets/icons/cog.svg'
 
 interface ItemProps {
-  name: string
   item: {
     title: string
+    name: string
     status: string
     link: string
     subtitle: string
@@ -19,7 +19,7 @@ interface ItemProps {
   }
 }
 
-export default function ListsItem({ name, item }: ItemProps) {
+export default function ListsItem({ item }: ItemProps) {
   const Content = () => {
     const types: string[] = item.type.split('|')
     const contents = [
@@ -43,7 +43,7 @@ export default function ListsItem({ name, item }: ItemProps) {
     return (
       <>
         <div className="lists__img">
-          <Ratio ratio="3_2" src={`/assets/img/portfolio/${name}/${name}-main.jpg`} />
+          <Ratio ratio="3_2" src={`/assets/img/portfolio/${item.name}/${item.name}-main.jpg`} />
           {item.status === 'off' && (
             <DimWrapper className="lists__dim-wrap">
               <div className="lists__dim">
