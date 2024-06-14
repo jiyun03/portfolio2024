@@ -229,8 +229,8 @@ export default function Index() {
     const dataFetch = async (): Promise<void> => {
       const response = await fetch('/api/portfolio')
       const portfolioLists = await response.json()
-      await setLists(portfolioLists)
-      await setListsLoading(false)
+      setLists(portfolioLists)
+      setListsLoading(false)
     }
     dataFetch()
   }, [])
@@ -300,7 +300,7 @@ export default function Index() {
       <ListsWrapper>
         <div className="lists">
           {!listsLoading ? (
-            listsSort.length !== 0 ? (
+            Object.entries(listsSort).length !== 0 ? (
               <div className="lists-wrap">
                 {Object.entries(listsSort).map((item, idx) => {
                   if (idx > listsLimit - 1) return null
