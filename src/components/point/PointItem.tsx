@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface Title {
+interface TitleType {
   subtitle: string
   title: string
   tag: string
@@ -29,7 +29,7 @@ interface Btn {
 
 interface ProjectDetails {
   name: string
-  title: Title
+  title: TitleType
   kind: Kind
   zigzag: Record<string, ZigzagItem>
   btn: Btn
