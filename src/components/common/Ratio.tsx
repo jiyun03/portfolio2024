@@ -18,6 +18,7 @@ export default function Ratio({ ratio, src }: RatioProps) {
         }}
         fill
         sizes="100%"
+        quality={100}
         alt="이미지"
       />
     </RatioWrapper>
