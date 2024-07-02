@@ -116,4 +116,12 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
     cursor: pointer;
   }
+
+  // point
+  .page-point {
+    background: ${({ theme }) => theme.bgPoint};
+    body {
+      background: ${({ theme }) => theme.bgColor};
+    }
+  }
 `

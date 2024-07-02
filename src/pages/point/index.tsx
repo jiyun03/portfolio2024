@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
+import { useTheme } from '@/context/themeProvider'
 
 import Container from '@/components/common/Container'
 import Title from '@/components/common/Title'
@@ -51,6 +51,7 @@ interface Portfolio {
 export default function Index() {
   const [points, setPoints] = useState<Portfolio>({})
   const [pointsLoading, setPointsLoading] = useState<boolean>(true)
+  const [themeMode, toggleTheme] = useTheme()
 
   useEffect(() => {
     const dataFetch = async (): Promise<void> => {
@@ -63,55 +64,69 @@ export default function Index() {
   }, [])
 
   return (
-    <Container type="view">
-      <Title
-        content={{
-          title: '포인트 포트폴리오 목록',
-          subtitle: '재직중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
-        }}
-      />
-      <PointWrapper>
-        <div className="points">
-          {!pointsLoading ? (
-            Object.values(points).length !== 0 ? (
-              Object.values(points).map((item, idx) => {
-                return <PointItem key={idx} item={item} index={idx} />
-              })
+    <>
+      <Container>
+        <Title
+          content={{
+            title: '포인트 포트폴리오 목록',
+            subtitle: '재직중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
+          }}
+        />
+        <PointWrapper>
+          <div className="points">
+            {!pointsLoading ? (
+              Object.values(points).length !== 0 ? (
+                Object.values(points).map((item, idx) => {
+                  return <PointItem key={idx} item={item} index={idx} />
+                })
+              ) : (
+                // 이거 좀 꾸며...
+                '프로젝트 목록이 없습니다'
+              )
             ) : (
-              // 이거 좀 꾸며...
-              '프로젝트 목록이 없습니다'
-            )
-          ) : (
-            <div className="points__none">
-              <IC_Loading />
-            </div>
-          )}
-        </div>
-      </PointWrapper>
+              <div className="points__none">
+                <IC_Loading />
+              </div>
+            )}
+          </div>
+        </PointWrapper>
+      </Container>
       <CloudWrapper>
         <div
           className="cloud cloud--front"
           style={{
-            background: 'url(/assets/img/point/cloud-front.png) repeat-x center',
+            backgroundImage: `url(/assets/img/point/cloud-front-${themeMode}.png)`,
+            backgroundRepeat: 'repeat-x',
+            backgroundPosition: 'center',
             backgroundSize: 'contain',
           }}
         />
         <div
           className="cloud cloud--back"
           style={{
-            background: 'url(/assets/img/point/cloud-back.png) repeat-x center',
+            backgroundImage: `url(/assets/img/point/cloud-back-${themeMode}.png)`,
+            backgroundRepeat: 'repeat-x',
+            backgroundPosition: 'center',
             backgroundSize: 'contain',
           }}
         />
-        <IC_Sun
-          className="cloud__ico cloud__ico--sun"
-          onClick={() => {
-            console.log('red')
-          }}
-        />
-        {/* <IC_Moon className="cloud__ico cloud__ico--moon" /> */}
+        {themeMode === 'light' ? (
+          <IC_Sun
+            className="cloud__ico cloud__ico--sun"
+            onClick={() => {
+              console.log('red')
+            }}
+          />
+        ) : (
+          <IC_Moon
+            className="cloud__ico cloud__ico--moon"
+            onClick={() => {
+              console.log('red')
+            }}
+          />
+        )}
       </CloudWrapper>
-    </Container>
+    </>
   )
 }
 
@@ -120,10 +135,18 @@ const cloudFlow = keyframes`
   100% { transform: translateY(10rem) ; }
 `
 
+const cloudFlow2 = keyframes`
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(15rem) ; }
+`
+
 const PointWrapper = styled.div`
-  margin-top: 80rem;
+  margin-bottom: 50rem;
   .points {
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
     z-index: 4;
     &__none {
       svg {
@@ -136,25 +159,29 @@ const PointWrapper = styled.div`
 `
 
 const CloudWrapper = styled.div`
+  position: relative;
+  height: 400rem;
   .cloud {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 500rem;
+    height: 100%;
     pointer-events: none;
     z-index: 2;
-    animation: ${cloudFlow} 1s linear infinite alternate;
     &--back {
+      bottom: -3rem;
       z-index: 1;
+      animation: ${cloudFlow2} 1s linear infinite alternate;
     }
     &--front {
       z-index: 3;
+      animation: ${cloudFlow} 1s linear infinite alternate;
     }
     &__ico {
-      position: fixed;
+      position: absolute;
       left: 100rem;
-      bottom: 330rem;
+      bottom: 240rem;
       width: 150rem;
       height: 150rem;
       z-index: 2;

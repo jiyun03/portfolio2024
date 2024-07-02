@@ -55,8 +55,8 @@ const heartbeat = keyframes`
 
 const HeaderWrapper = styled.header`
   position: sticky;
-  top: 24rem;
-  margin: 24rem;
+  top: 0;
+  padding: 24rem;
   z-index: 1000;
   ${({ theme }) => theme.sm`
     top: 15px;

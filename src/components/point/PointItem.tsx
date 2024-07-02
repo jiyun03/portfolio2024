@@ -54,11 +54,11 @@ export default function PointItem({ item, index }: PointItemProps) {
         </div>
         <div className="point__title-wrap">
           <div className="point__title">{item.title.title}</div>
-          <div className="points__tags-wrap">
+          <div className="point__tags-wrap">
             {tag.length !== 0 &&
               tag.map((tags, idx) => {
                 return (
-                  <span key={idx} className="points__tags">
+                  <span key={idx} className="point__tags">
                     {tags}
                   </span>
                 )
@@ -71,12 +71,28 @@ export default function PointItem({ item, index }: PointItemProps) {
 }
 
 const PointItemWrapper = styled.div`
-  // margin-bottom: 200rem;
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 0 10px;
+  ${({ theme }) => theme.xl`
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 20px;
+  `}
+  ${({ theme }) => theme.md`
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  `}
   .point {
     &__link {
       position: relative;
+      display: block;
+      border-radius: 15px;
+      overflow: hidden;
     }
     &__img {
+      display: block;
       &:after {
         content: '';
         position: absolute;
@@ -88,14 +104,24 @@ const PointItemWrapper = styled.div`
       }
     }
     &__title {
-      font-size: 42rem;
+      font-size: 20rem;
       font-weight: 600;
       &-wrap {
         position: absolute;
         left: 30rem;
         bottom: 30rem;
-        color: ${({ theme }) => theme.bgColor};
+        color: #fff;
       }
+    }
+    &__tags {
+      display: inline-block;
+      margin-right: 8rem;
+      padding: 4.8rem 8rem;
+      font-size: 13rem;
+      line-height: 1;
+      color: ${({ theme }) => theme.textColor2};
+      background: ${({ theme }) => theme.bgType};
+      border-radius: 15px;
     }
   }
 `
