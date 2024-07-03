@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from '@/context/themeProvider'
+import { Portfolio } from '@/types/point'
 
 import Container from '@/components/common/Container'
 import Title from '@/components/common/Title'
@@ -10,44 +11,6 @@ import PointItem from '@/components/point/PointItem'
 import styled, { keyframes } from 'styled-components'
 import IC_Sun from '/public/assets/icons/sun.svg'
 import IC_Moon from '/public/assets/icons/moon.svg'
-
-interface TitleType {
-  subtitle: string
-  title: string
-  tag: string
-  color: string
-  content: string
-  feel: string
-}
-
-interface Kind {
-  date: string
-  work: string
-  type: string
-  url: string
-}
-
-interface ZigzagItem {
-  title: string
-  content: string
-}
-
-interface Btn {
-  prev?: string
-  next: string
-}
-
-interface ProjectDetails {
-  name: string
-  title: TitleType
-  kind: Kind
-  zigzag: Record<string, ZigzagItem>
-  btn: Btn
-}
-
-interface Portfolio {
-  [key: string]: ProjectDetails
-}
 
 export default function Index() {
   const [points, setPoints] = useState<Portfolio>({})

@@ -1,48 +1,10 @@
 import Link from 'next/link'
+import { PointItemProps } from '@/types/point'
 
 import Ratio from '@/components/common/Ratio'
 
 import styled, { keyframes } from 'styled-components'
 import IC_Arrow_right from '/public/assets/icons/arrow_right.svg'
-
-interface TitleType {
-  subtitle: string
-  title: string
-  tag: string
-  color: string
-  content: string
-  feel: string
-}
-
-interface Kind {
-  date: string
-  work: string
-  type: string
-  url: string
-}
-
-interface ZigzagItem {
-  title: string
-  content: string
-}
-
-interface Btn {
-  prev?: string
-  next: string
-}
-
-interface ProjectDetails {
-  name: string
-  title: TitleType
-  kind: Kind
-  zigzag: Record<string, ZigzagItem>
-  btn: Btn
-}
-
-interface PointItemProps {
-  item: ProjectDetails
-  index: number
-}
 
 export default function PointItem({ item, index }: PointItemProps) {
   const tag: Array<string> = item.title.tag.split('|')

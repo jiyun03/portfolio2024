@@ -1,37 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { ProjectDetails, Portfolio } from '@/types/point'
 import jsonFile from './point.json'
-
-interface TitleType {
-  subtitle: string
-  title: string
-  tag: string
-  color: string
-  content: string
-  feel: string
-}
-
-interface Kind {
-  date: string
-  techStack: string
-  type: string
-  url: string
-}
-
-interface ZigzagItem {
-  title: string
-  content: string
-}
-
-interface ProjectDetails {
-  name: string
-  title: TitleType
-  kind: Kind
-  zigzag: Record<string, ZigzagItem>
-}
-
-interface Portfolio {
-  [key: string]: ProjectDetails
-}
 
 const portfolio: Portfolio = jsonFile as Portfolio
 
