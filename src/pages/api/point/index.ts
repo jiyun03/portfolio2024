@@ -12,7 +12,7 @@ interface TitleType {
 
 interface Kind {
   date: string
-  work: string
+  techStack: string
   type: string
   url: string
 }
@@ -22,17 +22,11 @@ interface ZigzagItem {
   content: string
 }
 
-interface Btn {
-  prev?: string
-  next: string
-}
-
 interface ProjectDetails {
   name: string
   title: TitleType
   kind: Kind
   zigzag: Record<string, ZigzagItem>
-  btn: Btn
 }
 
 interface Portfolio {
