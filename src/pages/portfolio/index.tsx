@@ -3,6 +3,8 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 import Container from '@/components/common/Container'
 import Title from '@/components/common/Title'
+import SearchNone from '@/components/common/SearchNone'
+import Loading from '@/components/common/Loading'
 import Portal from '@/components/common/Portal'
 import ListsItem from '@/components/portfolio/ListItem'
 import Search from '@/components/portfolio/Search'
@@ -11,8 +13,6 @@ import FloatButton from '@/components/portfolio/FloatButton'
 
 import styled, { keyframes } from 'styled-components'
 import IC_ButtonMore from '/public/assets/icons/button_more.svg'
-import IC_SearchNone from '/public/assets/icons/search_none.svg'
-import IC_Loading from '/public/assets/icons/loading.svg'
 import IC_Filter from '/public/assets/icons/filter.svg'
 import IC_SortClose from '/public/assets/icons/sort_close.svg'
 
@@ -266,7 +266,7 @@ export default function Index() {
       <Title
         content={{
           title: '프로젝트 목록',
-          subtitle: '재직중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
+          subtitle: '재직 중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
         }}
       />
       {/* Tool */}
@@ -308,17 +308,10 @@ export default function Index() {
                 })}
               </div>
             ) : (
-              <SearchNone>
-                <div className="search-none__icon">
-                  <IC_SearchNone />
-                </div>
-                <div className="search-none__title">검색 결과가 없습니다.</div>
-              </SearchNone>
+              <SearchNone title="검색 결과가 없습니다." />
             )
           ) : (
-            <div className="lists__none">
-              <IC_Loading />
-            </div>
+            <Loading />
           )}
         </div>
         {Object.values(listsSort).length > defaultLimit - 1 && Object.values(listsSort).length > listsLimit && (
@@ -511,53 +504,14 @@ const ListsWrapper = styled.div`
       flex: 0 0 33.3333%;
       max-width: 33.3333%;
       padding: 0 10px;
-      ${({ theme }) => theme.lg`
+      ${({ theme }) => theme.xl`
         flex: 0 0 50%;
         max-width: 50%;
       `}
-      ${({ theme }) => theme.sm`
+      ${({ theme }) => theme.md`
         flex: 0 0 100%;
         max-width: 100%;
       `}
-    }
-    &__none {
-      svg {
-        display: block;
-        width: 110rem;
-        margin: auto;
-      }
-    }
-  }
-`
-
-const SearchNone = styled.div`
-  margin-top: 50rem;
-  text-align: center;
-  .search-none {
-    &__icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 130rem;
-      height: 130rem;
-      margin: auto;
-      padding: 45rem;
-      background: ${({ theme }) => theme.bgSearchNone};
-      border-radius: 50%;
-      ${({ theme }) => theme.sm`
-        width: 100rem;
-        height: 100rem;
-        padding: 30rem;
-      `}
-      svg {
-        width: 50rem;
-        height: 50rem;
-      }
-    }
-    &__title {
-      margin-top: 10rem;
-      font-size: 20rem;
-      font-weight: 600;
     }
   }
 `

@@ -3,10 +3,11 @@ import { useTheme } from '@/context/themeProvider'
 
 import Container from '@/components/common/Container'
 import Title from '@/components/common/Title'
+import SearchNone from '@/components/common/SearchNone'
+import Loading from '@/components/common/Loading'
 import PointItem from '@/components/point/PointItem'
 
 import styled, { keyframes } from 'styled-components'
-import IC_Loading from '/public/assets/icons/loading.svg'
 import IC_Sun from '/public/assets/icons/sun.svg'
 import IC_Moon from '/public/assets/icons/moon.svg'
 
@@ -51,7 +52,7 @@ interface Portfolio {
 export default function Index() {
   const [points, setPoints] = useState<Portfolio>({})
   const [pointsLoading, setPointsLoading] = useState<boolean>(true)
-  const [themeMode, toggleTheme] = useTheme()
+  const [themeMode] = useTheme()
 
   useEffect(() => {
     const dataFetch = async (): Promise<void> => {
@@ -69,7 +70,7 @@ export default function Index() {
         <Title
           content={{
             title: '포인트 포트폴리오 목록',
-            subtitle: '재직중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
+            subtitle: '재직 중 작업한 프로젝트 중 포인트가 있는 프로젝트 목록입니다.\n최근 작업한 프로젝트로 구성되어 있습니다 :)',
           }}
         />
         <PointWrapper>
@@ -80,13 +81,10 @@ export default function Index() {
                   return <PointItem key={idx} item={item} index={idx} />
                 })
               ) : (
-                // 이거 좀 꾸며...
-                '프로젝트 목록이 없습니다'
+                <SearchNone title="프로젝트 목록이 없습니다." />
               )
             ) : (
-              <div className="points__none">
-                <IC_Loading />
-              </div>
+              <Loading />
             )}
           </div>
         </PointWrapper>
@@ -110,32 +108,18 @@ export default function Index() {
             backgroundSize: 'contain',
           }}
         />
-        {themeMode === 'light' ? (
-          <IC_Sun
-            className="cloud__ico cloud__ico--sun"
-            onClick={() => {
-              console.log('red')
-            }}
-          />
-        ) : (
-          <IC_Moon
-            className="cloud__ico cloud__ico--moon"
-            onClick={() => {
-              console.log('red')
-            }}
-          />
-        )}
+        {themeMode === 'light' ? <IC_Sun className="cloud__ico cloud__ico--sun" /> : <IC_Moon className="cloud__ico cloud__ico--moon" />}
       </CloudWrapper>
     </>
   )
 }
 
-const cloudFlow = keyframes`
+const cloudMoveFront = keyframes`
   0%   { transform: translateY(0); }
   100% { transform: translateY(10rem) ; }
 `
 
-const cloudFlow2 = keyframes`
+const cloudMoveBack = keyframes`
   0%   { transform: translateY(0); }
   100% { transform: translateY(15rem) ; }
 `
@@ -147,20 +131,15 @@ const PointWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     margin: 0 -10px;
-    z-index: 4;
-    &__none {
-      svg {
-        display: block;
-        width: 110rem;
-        margin: auto;
-      }
-    }
   }
 `
 
 const CloudWrapper = styled.div`
   position: relative;
   height: 400rem;
+  ${({ theme }) => theme.sm`
+    height: 200rem;
+  `}
   .cloud {
     position: absolute;
     left: 0;
@@ -170,13 +149,12 @@ const CloudWrapper = styled.div`
     pointer-events: none;
     z-index: 2;
     &--back {
-      bottom: -3rem;
       z-index: 1;
-      animation: ${cloudFlow2} 1s linear infinite alternate;
+      animation: ${cloudMoveBack} 1s linear infinite alternate;
     }
     &--front {
       z-index: 3;
-      animation: ${cloudFlow} 1s linear infinite alternate;
+      animation: ${cloudMoveFront} 1s linear infinite alternate;
     }
     &__ico {
       position: absolute;
@@ -184,7 +162,28 @@ const CloudWrapper = styled.div`
       bottom: 240rem;
       width: 150rem;
       height: 150rem;
+      cursor: pointer;
       z-index: 2;
+      ${({ theme }) => theme.xl`
+        left: 24rem;
+      `}
+      ${({ theme }) => theme.sm`
+        bottom: 120rem;
+        width: 100rem;
+        height: 100rem;
+      `}
+      &--sun {
+        transition: transform 2s;
+        &:hover {
+          transform: rotate(180deg);
+        }
+      }
+      &--moon {
+        transition: transform 1s;
+        &:hover {
+          transform: rotate(60deg);
+        }
+      }
     }
   }
 `

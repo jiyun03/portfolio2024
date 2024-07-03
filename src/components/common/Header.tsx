@@ -59,8 +59,7 @@ const HeaderWrapper = styled.header`
   padding: 24rem;
   z-index: 1000;
   ${({ theme }) => theme.sm`
-    top: 15px;
-    margin: 15px;
+    padding: 15px;
   `}
   .header {
     display: flex;

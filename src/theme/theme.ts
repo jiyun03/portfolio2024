@@ -37,7 +37,7 @@ export const darkTheme = {
   pointColor2: 'rgba(255, 41, 40, 1)',
   headerShadow: 'none',
   headerHover: 'rgba(255, 255, 255, 0.1)',
-  listsShadow: '0 0 3px rgba(255, 255, 255, 0.5)',
+  listsShadow: '0 2px 15px rgba(255, 255, 255, 0.5)',
 }
 
 export const theme = {

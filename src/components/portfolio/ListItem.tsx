@@ -181,25 +181,25 @@ const DimWrapper = styled.div`
       height: 21.12rem;
       vertical-align: middle;
       animation: ${rotateInfinite} 5s linear infinite;
-      ${({ theme }) => theme.lg`
+      ${({ theme }) => theme.xl`
         width: 2vw;
         height: 2vw;
       `}
-      ${({ theme }) => theme.sm`
+      ${({ theme }) => theme.md`
         width: 5vw;
         height: 5vw;
       `}
     }
     &-title {
       display: inline-block;
-      margin-left: 8rem;
-      font-size: 19rem;
+      margin-left: 10rem;
+      font-size: 21rem;
       color: #ffffff;
       vertical-align: middle;
-      ${({ theme }) => theme.lg`
+      ${({ theme }) => theme.xl`
         font-size: 2vw;
       `}
-      ${({ theme }) => theme.sm`
+      ${({ theme }) => theme.md`
         font-size: 5vw;
       `}
     }

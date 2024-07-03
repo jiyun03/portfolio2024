@@ -2,7 +2,8 @@ import Link from 'next/link'
 
 import Ratio from '@/components/common/Ratio'
 
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import IC_Arrow_right from '/public/assets/icons/arrow_right.svg'
 
 interface TitleType {
   subtitle: string
@@ -51,24 +52,47 @@ export default function PointItem({ item, index }: PointItemProps) {
       <Link href={`point/${item.name}`} className={`point__link point__link--${item.name}`}>
         <div className="point__img">
           <Ratio ratio="1_1" src={`/assets/img/portfolio/${item.name}/${item.name}.jpg`} />
-        </div>
-        <div className="point__title-wrap">
-          <div className="point__title">{item.title.title}</div>
-          <div className="point__tags-wrap">
-            {tag.length !== 0 &&
-              tag.map((tags, idx) => {
-                return (
-                  <span key={idx} className="point__tags">
-                    {tags}
-                  </span>
-                )
-              })}
+          <div className="point__content">
+            <div className="point__title">{item.title.title}</div>
+            <button className="point__btn">
+              <IC_Arrow_right />
+            </button>
           </div>
+        </div>
+        <div className="point__tags-wrap">
+          {tag.length !== 0 &&
+            tag.map((tags, idx) => {
+              return (
+                <span key={idx} className="point__tags">
+                  {tags}
+                </span>
+              )
+            })}
         </div>
       </Link>
     </PointItemWrapper>
   )
 }
+
+const arrowHover = keyframes`
+	0%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+	40%{
+		opacity: 0;
+		transform: translateX(10px);
+	}
+	60%{
+		opacity: 0;
+		transform: translateX(-10px);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+`
 
 const PointItemWrapper = styled.div`
   flex: 0 0 25%;
@@ -86,13 +110,29 @@ const PointItemWrapper = styled.div`
   `}
   .point {
     &__link {
+      display: block;
+      transition: transform 0.3s;
+      &:hover {
+        transform: translateY(-30px);
+        ${({ theme }) => theme.xl`
+          transform: translateY(-10px);
+        `}
+        .point__img {
+          box-shadow: ${({ theme }) => theme.listsShadow};
+        }
+        .point__btn {
+          svg {
+            animation: ${arrowHover} 0.7s cubic-bezier(0.47, 0, 0.75, 0.72);
+          }
+        }
+      }
+    }
+    &__img {
       position: relative;
       display: block;
       border-radius: 15px;
       overflow: hidden;
-    }
-    &__img {
-      display: block;
+      transition: box-shadow 0.3s;
       &:after {
         content: '';
         position: absolute;
@@ -100,28 +140,51 @@ const PointItemWrapper = styled.div`
         right: 0;
         top: 0;
         bottom: 0;
-        background-image: linear-gradient(0, rgba(0, 0, 0, 0.25), transparent 15%);
+        background-image: linear-gradient(0, rgba(0, 0, 0, 0.25), transparent 20%);
       }
     }
+    &__content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 0 30rem 30rem 30rem;
+      z-index: 1;
+    }
     &__title {
-      font-size: 20rem;
+      width: calc(100% - 80rem);
+      font-size: 30rem;
       font-weight: 600;
-      &-wrap {
-        position: absolute;
-        left: 30rem;
-        bottom: 30rem;
-        color: #fff;
-      }
+      color: #fff;
     }
     &__tags {
       display: inline-block;
-      margin-right: 8rem;
-      padding: 4.8rem 8rem;
-      font-size: 13rem;
+      margin: 0 15rem 10rem 0;
+      padding: 7rem 10rem;
+      font-size: 16rem;
       line-height: 1;
       color: ${({ theme }) => theme.textColor2};
       background: ${({ theme }) => theme.bgType};
       border-radius: 15px;
+      &-wrap {
+        margin-top: 15rem;
+      }
+    }
+    &__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60rem;
+      height: 60rem;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      svg {
+        width: 35rem;
+      }
     }
   }
 `
