@@ -34,14 +34,19 @@ const RatioWrapper = styled.div<{ $ratio: string }>`
     content: '';
     display: block;
     ${({ $ratio }) =>
+      $ratio === '3_1' &&
+      `
+      padding-top: 33.33%;
+    `}
+    ${({ $ratio }) =>
       $ratio === '3_2' &&
       `
-      padding-top: 66.66%
+      padding-top: 66.66%;
     `}
     ${({ $ratio }) =>
       $ratio === '1_1' &&
       `
-      padding-top: 100%
+      padding-top: 100%;
     `}
   }
 `

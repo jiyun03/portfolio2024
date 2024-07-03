@@ -26,22 +26,22 @@ export default function Nav({ show }: NavProps) {
   const menuList: MenuItem[] = [
     {
       title: 'Point Portfolio',
-      link: 'point',
+      link: '/point',
       img: '/assets/img/common/menu_point.jpg',
     },
     {
       title: 'Portfolio',
-      link: 'portfolio',
+      link: '/portfolio',
       img: '/assets/img/common/menu_portfolio.jpg',
     },
     {
       title: 'About',
-      link: 'about',
+      link: '/about',
       img: '/assets/img/common/menu_about.jpg',
     },
     {
       title: 'Contact',
-      link: 'contact',
+      link: '/contact',
       img: '/assets/img/common/menu_contact.jpg',
     },
   ]
