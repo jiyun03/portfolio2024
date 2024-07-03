@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { ListProps, SortItem, SortContent } from '@/types/portfolio'
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 
 import Container from '@/components/common/Container'
@@ -15,29 +16,6 @@ import styled, { keyframes } from 'styled-components'
 import IC_ButtonMore from '/public/assets/icons/button_more.svg'
 import IC_Filter from '/public/assets/icons/filter.svg'
 import IC_SortClose from '/public/assets/icons/sort_close.svg'
-
-interface List {
-  title: string
-  name: string
-  status: string
-  link: string
-  subtitle: string
-  date: string
-  works: string
-  company: string
-  type: string
-}
-
-interface SortItem {
-  id: string
-  name: string
-  item?: Array<string>
-}
-
-interface SortContent {
-  name: string
-  item: SortItem[]
-}
 
 export default function Index() {
   const defaultLimit: number = 6
@@ -59,10 +37,10 @@ export default function Index() {
     },
   ]
   // 전체 리스트
-  const [lists, setLists] = useState<List[]>([])
+  const [lists, setLists] = useState<ListProps[]>([])
   const [listsLoading, setListsLoading] = useState<boolean>(true)
   // sort 된 리스트 배열 (검색, sort)
-  const [listsSort, setListsSort] = useState<List[]>([])
+  const [listsSort, setListsSort] = useState<ListProps[]>([])
   const [listsSortSearch, setListsSortSearch] = useState<string>('')
   const [listsSortYear, setListsSortYear] = useState<SortItem[]>([])
   const [listsSortType, setListsSortType] = useState<SortItem[]>([])
@@ -111,8 +89,8 @@ export default function Index() {
 
   useEffect(() => {
     // sort 리스트
-    const sortLists: List[][] = sortArray.reduce((acc: List[][], sort: SortItem) => {
-      const filteredLists: List[] = Object.values(lists).filter((list: List) => {
+    const sortLists: ListProps[][] = sortArray.reduce((acc: ListProps[][], sort: SortItem) => {
+      const filteredLists: ListProps[] = Object.values(lists).filter((list: ListProps) => {
         const date: string = list.date.split('.')[0]
         const type: string[] = list.type.split('|')
 
@@ -123,7 +101,7 @@ export default function Index() {
       return [...acc, filteredLists]
     }, [])
 
-    const sortFlat: List[] = sortLists.flat()
+    const sortFlat: ListProps[] = sortLists.flat()
 
     // sort id 별 개수 체크
     const sortCountCheck = (): number => {
@@ -135,27 +113,27 @@ export default function Index() {
     }
 
     // [리팩토링] sort 중복 검수 리팩토링 필요
-    const sortDuplicatesFind: List[] =
+    const sortDuplicatesFind: ListProps[] =
       sortCountCheck() > 1
         ? sortFlat
-            .filter((item: List, index: number) => {
+            .filter((item: ListProps, index: number) => {
               return sortFlat.indexOf(item) !== index
             })
-            .sort((a: List, b: List) => new Date(b.date).getTime() - new Date(a.date).getTime())
+            .sort((a: ListProps, b: ListProps) => new Date(b.date).getTime() - new Date(a.date).getTime())
         : sortFlat
 
-    const sortDuplicates: List[] =
+    const sortDuplicates: ListProps[] =
       sortCountCheck() > 2
-        ? sortDuplicatesFind.filter((item: List, index: number) => {
+        ? sortDuplicatesFind.filter((item: ListProps, index: number) => {
             return sortDuplicatesFind.indexOf(item) !== index
           })
         : sortDuplicatesFind
 
     // [검색] input에 작성한 타이틀, 서브타이틀 검색
-    const searchLists: List[] = sortFlat.length === 0 ? lists : sortDuplicates
-    const search: List[] =
+    const searchLists: ListProps[] = sortFlat.length === 0 ? lists : sortDuplicates
+    const search: ListProps[] =
       listsSortSearch !== ''
-        ? Object.values(searchLists).filter((list: List) => {
+        ? Object.values(searchLists).filter((list: ListProps) => {
             return list.title.toLowerCase().includes(listsSortSearch) || list.subtitle.toLowerCase().includes(listsSortSearch)
           })
         : searchLists
@@ -173,7 +151,7 @@ export default function Index() {
       const yearsMap: Map<string, SortItem> = new Map()
       const typesMap: Map<string, SortItem> = new Map()
 
-      Object.values(lists).forEach((item: List) => {
+      Object.values(lists).forEach((item: ListProps) => {
         const year: string = item.date.split('.')[0]
         const type: string[] = item.type.split('|')
         yearsMap.set(year, { id: year, name: `${year}년` })

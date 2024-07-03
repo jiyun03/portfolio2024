@@ -1,25 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { ListProps, Portfolio } from '@/types/portfolio'
 import jsonFile from './portfolio.json'
-
-interface Project {
-  title: string
-  name: string
-  status: string
-  link: string
-  subtitle: string
-  date: string
-  works: string
-  company: string
-  type: string
-}
-
-interface Portfolio {
-  [key: string]: Project
-}
 
 const portfolio: Portfolio = jsonFile
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse<Portfolio | Project | { error: string }>) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<Portfolio | ListProps | { error: string }>) {
   const { id } = req.query
 
   try {

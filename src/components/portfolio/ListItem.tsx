@@ -1,23 +1,10 @@
 import Link from 'next/link'
+import { ItemProps } from '@/types/portfolio'
 
 import Ratio from '@/components/common/Ratio'
 
 import styled, { keyframes } from 'styled-components'
 import IC_Cog from '/public/assets/icons/cog.svg'
-
-interface ItemProps {
-  item: {
-    title: string
-    name: string
-    status: string
-    link: string
-    subtitle: string
-    date: string
-    works: string
-    company: string
-    type: string
-  }
-}
 
 export default function ListsItem({ item }: ItemProps) {
   const Content = () => {
