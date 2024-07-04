@@ -231,11 +231,11 @@ export default function Index() {
     }
 
     // scrollLock
-    if (isMobile && floatClick) {
-      disableBodyScroll(floatRef.current!)
-    } else {
-      enableBodyScroll(floatRef.current!)
-    }
+    // if (isMobile && floatClick) {
+    //   disableBodyScroll(floatRef.current!)
+    // } else {
+    //   enableBodyScroll(floatRef.current!)
+    // }
   }, [floatClick, isMobile])
 
   return (
