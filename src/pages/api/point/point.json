@@ -73,14 +73,14 @@
     },
     "kind": {
       "date": "2022.06 (2months)",
-      "techStack": "HTML, SCSS, JAVASCRIPT (Total : 70%)",
-      "work": "반응형 웹",
+      "techStack": "HTML, SCSS, JAVASCRIPT, Handlebars.js",
+      "work": "Total : 70%",
       "url": "https://kid-3fb.pages.dev/"
     },
     "zigzag": {
       "1": {
-        "title": "Scradar.js를 사용하여 스크롤 인터랙션 구현",
-        "content": "사내 자체제작 라이브러리를 사용하여 스크롤 인터랙션을 구현했습니다."
+        "title": "Splide.js 슬라이드",
+        "content": "슬라이드는 여러 페이지에서 사용되는 기능이니 만큼 for 문으로 슬라이드의 개수만큼 반복시켜 실행해 모든 슬라이드 기능에 문제가 없게 처리했습니다. 슬라이드의 타입을 정하고 switch case문으로 타입별로 분기하여 기능을 처리했습니다."
       },
       "2": {
         "title": "이미지 시퀀스 인터랙션",

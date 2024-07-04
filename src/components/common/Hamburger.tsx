@@ -15,14 +15,14 @@ export default function Hamburger({ show }: HamburgerProps) {
     <HamburgerWrapper
       $show={show.menuShow || false}
       onClick={() => {
-        const scrollTargetElement = document.querySelector('body')
+        // const scrollTargetElement = document.querySelector('body')
 
         show.setMenuShow(!show.menuShow)
-        if (show.menuShow) {
-          enableBodyScroll(scrollTargetElement as HTMLElement)
-        } else {
-          disableBodyScroll(scrollTargetElement as HTMLElement)
-        }
+        // if (show.menuShow) {
+        //   enableBodyScroll(scrollTargetElement as HTMLElement)
+        // } else {
+        //   disableBodyScroll(scrollTargetElement as HTMLElement)
+        // }
       }}
     >
       <button className="hamburger">
