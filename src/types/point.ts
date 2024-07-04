@@ -10,7 +10,7 @@ export interface TitleType {
 export interface Kind {
   date: string
   techStack: string
-  type: string
+  work: string
   url: string
 }
 

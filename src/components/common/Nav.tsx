@@ -23,6 +23,7 @@ interface MenuItem {
 
 export default function Nav({ show }: NavProps) {
   const { route } = useRouter()
+  const router = useRouter()
   const menuList: MenuItem[] = [
     {
       title: 'Point Portfolio',
@@ -55,7 +56,7 @@ export default function Nav({ show }: NavProps) {
               <li key={idx} className="menu__item">
                 <Link
                   href={menu.link}
-                  className={`menu__link ${route === `/${menu.link}` ? 's-active' : ''}`}
+                  className={`menu__link ${`/${route.split('/')[1]}` === `${menu.link}` ? 's-active' : ''}`}
                   onClick={() => {
                     show.setMenuShow(false)
                     enableBodyScroll(document.querySelector('body') as HTMLElement)

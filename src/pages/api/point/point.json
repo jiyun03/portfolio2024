@@ -10,7 +10,7 @@
       "feel": "그동안 혼자 공부했던 스크롤 인터랙션을 적용해 볼 수 있는 기회였습니다. Handlebars 라이브러리를 사용하여 템플릿 작업을 했으며 <span class='point'>BEM 방법론</span>과 SCSS를 통해 효율적으로 스타일링 하는 방법을 배웠습니다. 다국어 사이트이기 때문에 스타일을 수정했을 때 다른 언어에 차질이 없는지 꼼꼼히 확인했습니다."
     },
     "kind": {
-      "date": "2022.03 (1month)",
+      "date": "2022.03 (1months)",
       "techStack": "Vue, Nuxt, Vuetify, Pinia, Tanstack Query, Axios (Total : 35%)",
       "type": "반응형 웹",
       "url": ""
@@ -41,7 +41,7 @@
       "feel": "그동안 혼자 공부했던 스크롤 인터랙션을 적용해 볼 수 있는 기회였습니다. Handlebars 라이브러리를 사용하여 템플릿 작업을 했으며 <span class='point'>BEM 방법론</span>과 SCSS를 통해 효율적으로 스타일링 하는 방법을 배웠습니다. 다국어 사이트이기 때문에 스타일을 수정했을 때 다른 언어에 차질이 없는지 꼼꼼히 확인했습니다."
     },
     "kind": {
-      "date": "2022.03 (1month)",
+      "date": "2022.03 (1months)",
       "techStack": "React, Remix, Emotion, Mantine, Supabase, CloudFlare (Total : 35%)",
       "type": "반응형 웹",
       "url": ""
@@ -72,7 +72,7 @@
       "feel": "Handlebars.js를 사용하여 레이아웃을 컴포넌트 단위로 관리할 수 있었으며 하나의 컴포넌트를 여러 타입으로 css 분기해 처리해야 했으므로 css가 꼬이지 않게 유의하며 작업했습니다. 스크립트 또한 모듈로 묶어 공통적으로 사용할 수 있게 작업을 진행한 프로젝트 입니다."
     },
     "kind": {
-      "date": "2022.06 (2month)",
+      "date": "2022.06 (2months)",
       "techStack": "HTML, SCSS, JAVASCRIPT (Total : 70%)",
       "type": "반응형 웹",
       "url": "https://kid-3fb.pages.dev/"
@@ -100,12 +100,12 @@
       "tag": "Handlebars|Swiper|마이크로 인터랙션|이미지 시퀀스",
       "color": "000000",
       "content": "네이버 신사옥 1784 소개 사이트로 스크롤 인터랙션의 비중이 큰 사이트입니다. 가로스크롤 작업, 앵커 작업, 다국어 작업 등 원페이지지만 여러 기능이 들어가서 주의해야할 부분이 많았습니다. tabindex 등의 <span class='point'>접근성</span>을 고려하며 여러 인터랙션이 들어간 만큼 사용에 불편함이 없게 하기 위해 여러번 QA를 진행했습니다.",
-      "feel": "그동안 혼자 공부했던 스크롤 인터랙션을 적용해 볼 수 있는 기회였습니다. Handlebars 라이브러리를 사용하여 템플릿 작업을 했으며 <span class='point'>BEM 방법론</span>과 SCSS를 통해 효율적으로 스타일링 하는 방법을 배웠습니다. 다국어 사이트이기 때문에 스타일을 수정했을 때 다른 언어에 차질이 없는지 꼼꼼히 확인했습니다."
+      "feel": "그동안 혼자 공부했던 스크롤 인터랙션을 적용해 볼 수 있는 기회였습니다. Handlebars.js를 사용하여 템플릿 작업을 했으며 <span class='point'>BEM 방법론</span>과 SCSS를 통해 효율적으로 스타일링 하는 방법을 익혔습니다. 다국어 사이트이며 비주얼적인 사이트이기 때문에 스타일을 수정했을 때 다른 언어에 차질이 없는지 꼼꼼히 확인하는 습관을 익힐 수 있어 좋은 경험이 된 프로젝트입니다."
     },
     "kind": {
-      "date": "2022.03 (1month)",
-      "techStack": "HTML, CSS, JAVASCRIPT (Total : 35%)",
-      "type": "반응형 웹",
+      "date": "2022.03 (1months)",
+      "techStack": "HTML, SCSS, JAVASCRIPT, Handlebars.js",
+      "work": "Total : 35%",
       "url": "https://1784.navercorp.com"
     },
     "zigzag": {

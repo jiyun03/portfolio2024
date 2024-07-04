@@ -4,10 +4,10 @@ import { PointItemProps } from '@/types/point'
 import Ratio from '@/components/common/Ratio'
 
 import styled, { keyframes } from 'styled-components'
-import IC_Arrow_right from '/public/assets/icons/arrow_right.svg'
+import IC_Arrow_Right from '/public/assets/icons/arrow_right.svg'
 
 export default function PointItem({ item, index }: PointItemProps) {
-  const tag: Array<string> = item.title.tag.split('|')
+  const tags: Array<string> = item.title.tag.split('|')
 
   return (
     <PointItemWrapper>
@@ -17,19 +17,17 @@ export default function PointItem({ item, index }: PointItemProps) {
           <div className="point__content">
             <div className="point__title">{item.title.title}</div>
             <button className="point__btn">
-              <IC_Arrow_right />
+              <IC_Arrow_Right />
             </button>
           </div>
         </div>
         <div className="point__tags-wrap">
-          {tag.length !== 0 &&
-            tag.map((tags, idx) => {
-              return (
-                <span key={idx} className="point__tags">
-                  {tags}
-                </span>
-              )
-            })}
+          {tags.length !== 0 &&
+            tags.map((tag, idx) => (
+              <span key={idx} className="point__tags">
+                {tag}
+              </span>
+            ))}
         </div>
       </Link>
     </PointItemWrapper>
