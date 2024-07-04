@@ -19,11 +19,17 @@ export interface ZigzagItem {
   content: string
 }
 
+export interface Btn {
+  prev: string
+  next: string
+}
+
 export interface ProjectDetails {
   name: string
   title: TitleType
   kind: Kind
   zigzag: Record<string, ZigzagItem>
+  btn?: Btn
 }
 
 export interface Portfolio {

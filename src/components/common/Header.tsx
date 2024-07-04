@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import Hamburger from './Hamburger'
 import ThemeToggle from './ThemeToggle'
@@ -7,9 +8,11 @@ import Menu from './Nav'
 
 import styled, { keyframes } from 'styled-components'
 import IC_LogoHeart from '/public/assets/icons/logo_heart.svg'
+import IC_Button_Back from '/public/assets/icons/button_back.svg'
 
 export default function Header() {
   const [menuShow, setMenuShow] = useState<boolean>(false)
+  const { route } = useRouter()
 
   return (
     <HeaderWrapper>
@@ -37,6 +40,20 @@ export default function Header() {
           }}
         />
       </div>
+      {route === '/point/[id]' && (
+        <PointBackBtn>
+          <Link href="/point" className="back__link">
+            <span className="back__img">
+              <IC_Button_Back />
+            </span>
+            <span className="back__title">
+              목록으로
+              <br />
+              돌아가기
+            </span>
+          </Link>
+        </PointBackBtn>
+      )}
     </HeaderWrapper>
   )
 }
@@ -92,4 +109,70 @@ const HeaderWrapper = styled.header`
 const HeaderRight = styled.div`
   display: flex;
   align-items: center;
+`
+
+const PointBackBtn = styled.div`
+  margin-top: 20rem;
+  text-align: right;
+  ${({ theme }) => theme.md`
+    display: none;
+  `}
+  .back {
+    &__link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: end;
+      padding: 10rem 20rem;
+      font-size: 14rem;
+      line-height: 1.3em;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0.2rem;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background-color: ${({ theme }) => theme.textColor3};
+        transform: translateX(-50%);
+        transition: width 0.3s, background-color 0.3s;
+      }
+      &:hover {
+        &:after {
+          width: calc(100% - 40rem);
+          background-color: ${({ theme }) => theme.btnDark2};
+        }
+        .back {
+          &__img {
+            transform: rotate(-180deg);
+            svg {
+              path {
+                fill: ${({ theme }) => theme.btnDark2};
+              }
+            }
+          }
+          &__title {
+            color: ${({ theme }) => theme.btnDark2};
+          }
+        }
+      }
+    }
+    &__img {
+      width: 35rem;
+      height: 35rem;
+      transition: transform 0.3s;
+      svg {
+        path {
+          fill: ${({ theme }) => theme.textColor3};
+          transition: fill 0.3s;
+        }
+      }
+    }
+    &__title {
+      margin-left: 10rem;
+      font-weight: 600;
+      color: ${({ theme }) => theme.textColor3};
+      transition: color 0.3s;
+    }
+  }
 `

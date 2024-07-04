@@ -6,7 +6,11 @@ interface ContainerProps {
 }
 
 export default function Container({ type = '', children }: ContainerProps) {
-  return <ContainerWrapper $type={type}>{children}</ContainerWrapper>
+  return (
+    <ContainerWrapper $type={type} className="container">
+      {children}
+    </ContainerWrapper>
+  )
 }
 
 const ContainerWrapper = styled.div<{ $type: string }>`

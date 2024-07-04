@@ -39,6 +39,11 @@ const RatioWrapper = styled.div<{ $ratio: string }>`
       padding-top: 33.33%;
     `}
     ${({ $ratio }) =>
+      $ratio === '2_1' &&
+      `
+      padding-top: 50%;
+    `}
+    ${({ $ratio }) =>
       $ratio === '3_2' &&
       `
       padding-top: 66.66%;
