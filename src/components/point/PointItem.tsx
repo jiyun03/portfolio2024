@@ -113,18 +113,24 @@ const PointItemWrapper = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
-      padding: 0 30rem 30rem 30rem;
+      padding: 0 30rem 25rem 30rem;
       z-index: 1;
+      ${({ theme }) => theme.sm`
+        padding: 0 25rem 20rem 25rem;
+      `}
     }
     &__title {
       width: calc(100% - 80rem);
       font-size: 30rem;
       font-weight: 600;
       color: #fff;
+      ${({ theme }) => theme.sm`
+        font-size: 25rem;
+      `}
     }
     &__tags {
       display: inline-block;
-      margin: 0 15rem 10rem 0;
+      margin: 0 10rem 10rem 0;
       padding: 7rem 10rem;
       font-size: 16rem;
       line-height: 1;
@@ -144,8 +150,15 @@ const PointItemWrapper = styled.div`
       border-radius: 50%;
       background: #fff;
       box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      ${({ theme }) => theme.sm`
+        width: 45rem;
+        height: 45rem;
+      `}
       svg {
         width: 35rem;
+        ${({ theme }) => theme.sm`
+          width: 25rem;
+        `}
       }
     }
   }

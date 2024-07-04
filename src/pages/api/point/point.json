@@ -4,7 +4,7 @@
     "title": {
       "subtitle": "현대 클라우드 서비스",
       "title": "HCloud",
-      "tag": "Vue|API|Nuxt|Pinia|Vuetify",
+      "tag": "Vue|Nuxt|Pinia|Vuetify",
       "color": "000000",
       "content": "네이버 신사옥 1784 소개 사이트로 스크롤 인터랙션의 비중이 큰 사이트입니다. 가로스크롤 작업, 앵커 작업, 다국어 작업 등 원페이지지만 여러 기능이 들어가서 주의해야할 부분이 많았습니다. tabindex 등의 <span class='point'>접근성</span>을 고려하며 여러 인터랙션이 들어간 만큼 사용에 불편함이 없게 하기 위해 여러번 QA를 진행했습니다.",
       "feel": "그동안 혼자 공부했던 스크롤 인터랙션을 적용해 볼 수 있는 기회였습니다. Handlebars 라이브러리를 사용하여 템플릿 작업을 했으며 <span class='point'>BEM 방법론</span>과 SCSS를 통해 효율적으로 스타일링 하는 방법을 배웠습니다. 다국어 사이트이기 때문에 스타일을 수정했을 때 다른 언어에 차질이 없는지 꼼꼼히 확인했습니다."
