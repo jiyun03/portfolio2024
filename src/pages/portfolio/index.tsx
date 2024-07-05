@@ -283,7 +283,7 @@ export default function Index() {
           </div>
         </div>
         <div className="total">
-          총 <span className="total__num">{listsSort.length}</span>개
+          총 <span className="total__num">{Object.values(listsSort).length}</span>개
         </div>
       </ToolWrapper>
       {/* List */}

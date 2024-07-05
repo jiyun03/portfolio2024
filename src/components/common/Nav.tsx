@@ -47,7 +47,7 @@ export default function Nav({ show }: NavProps) {
   ]
 
   return (
-    <NavWrapper $show={show.menuShow}>
+    <NavWrapper $show={show.menuShow} className="nav">
       <Container type="view">
         <MenuWrapper>
           {menuList.map((menu, idx) => {

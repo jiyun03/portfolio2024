@@ -15,13 +15,15 @@ export default function Hamburger({ show }: HamburgerProps) {
     <HamburgerWrapper
       $show={show.menuShow || false}
       onClick={() => {
-        const scrollTargetElement = document.querySelector('body')
+        const scrollTargetElement = document.querySelector('.nav')
 
         show.setMenuShow(!show.menuShow)
-        if (show.menuShow) {
-          unlock(scrollTargetElement)
-        } else {
-          lock(scrollTargetElement, { overflowType: 'clip' })
+        if (scrollTargetElement instanceof HTMLElement) {
+          if (show.menuShow) {
+            unlock(scrollTargetElement)
+          } else {
+            lock(scrollTargetElement, { overflowType: 'clip' })
+          }
         }
       }}
     >
