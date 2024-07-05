@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock-upgrade'
+import { lock, unlock } from 'tua-body-scroll-lock'
 
 import styled from 'styled-components'
 
@@ -19,9 +19,9 @@ export default function Hamburger({ show }: HamburgerProps) {
 
         show.setMenuShow(!show.menuShow)
         if (show.menuShow) {
-          enableBodyScroll(scrollTargetElement as HTMLElement)
+          unlock(scrollTargetElement)
         } else {
-          disableBodyScroll(scrollTargetElement as HTMLElement)
+          lock(scrollTargetElement, { overflowType: 'clip' })
         }
       }}
     >
