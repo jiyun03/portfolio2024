@@ -175,8 +175,10 @@ export default function Index() {
       if (window.scrollY > floatBottom + 25) {
         setFloat(true)
       } else {
-        setFloat(false)
-        setFloatClick(false)
+        if (window.scrollY !== 0) {
+          setFloat(false)
+          setFloatClick(false)
+        }
       }
     }
   }, [])
@@ -213,6 +215,13 @@ export default function Index() {
     dataFetch()
   }, [])
 
+  // resize 세팅 초기 실행
+  useEffect(() => {
+    setTimeout(() => {
+      resizeSetting()
+    }, 500)
+  }, [resizeSetting])
+
   // [float] scroll, resize
   useEffect(() => {
     window.addEventListener('scroll', floatScroll)
@@ -231,10 +240,11 @@ export default function Index() {
     }
 
     // scrollLock
+    const scrollTargetElement = document.querySelector('body')
     if (isMobile && floatClick) {
-      lock(floatRef.current!)
+      lock(scrollTargetElement, { overflowType: 'clip' })
     } else {
-      unlock(floatRef.current!)
+      unlock(scrollTargetElement)
     }
   }, [floatClick, isMobile])
 

@@ -23,7 +23,6 @@ interface MenuItem {
 
 export default function Nav({ show }: NavProps) {
   const { route } = useRouter()
-  const router = useRouter()
   const menuList: MenuItem[] = [
     {
       title: 'Point Portfolio',
