@@ -146,7 +146,7 @@ export default function Index() {
     // [리스트] sort 된 리스트 목록 state 업데이트
     setListsSort(lists)
 
-    if (lists.length !== 0) {
+    if (Object.values(lists).length !== 0) {
       // 연도, 타입 설정
       const yearsMap: Map<string, SortItem> = new Map()
       const typesMap: Map<string, SortItem> = new Map()
@@ -359,7 +359,7 @@ const ToolWrapper = styled.div`
           border: ${({ theme }) => theme.borderColor};
           transform: translate(-50%, 0);
           animation: ${bounceUp} 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
-          z-index: 1200;
+          z-index: 900;
           ${({ theme }) => theme.lg`
             width: 70%;
           `}
@@ -371,6 +371,7 @@ const ToolWrapper = styled.div`
             border: none;
             box-shadow: 0 -10px 20px rgba(0,0,0,0.15);
             animation: ${showUp} 0.3s;
+          z-index: 1200;
             .sort {
               overflow-y:scroll;
               max-height: 25vh;

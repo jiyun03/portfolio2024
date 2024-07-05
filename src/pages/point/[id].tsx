@@ -60,9 +60,7 @@ export default function Page() {
                 <div className="intro__content-title">컬러</div>
                 <div className="intro__content-color-wrap">
                   {colors.length !== 0 &&
-                    colors.map((color, idx) => (
-                      <span key={idx} className="intro__content-color" style={{ backgroundColor: `#${color}` }} />
-                    ))}
+                    colors.map((color, idx) => <span key={idx} className="intro__content-color" style={{ backgroundColor: `${color}` }} />)}
                 </div>
               </div>
               <div className="intro__content-item">

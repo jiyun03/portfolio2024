@@ -75,6 +75,7 @@ const HeaderWrapper = styled.header`
   top: 0;
   padding: 24rem;
   z-index: 1000;
+  pointer-events: none;
   ${({ theme }) => theme.sm`
     padding: 15px;
   `}
@@ -86,6 +87,7 @@ const HeaderWrapper = styled.header`
     border-radius: 30px;
     background-color: ${({ theme }) => theme.bgHeader};
     box-shadow: ${({ theme }) => theme.headerShadow};
+    pointer-events: auto;
     &__link {
       display: inline-block;
       padding: 10.8rem 32rem;
@@ -126,6 +128,7 @@ const PointBackBtn = styled.div`
       padding: 10rem 20rem;
       font-size: 14rem;
       line-height: 1.3em;
+      pointer-events: auto;
       &:after {
         content: '';
         position: absolute;
