@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import { enableBodyScroll } from 'body-scroll-lock'
+import { enableBodyScroll } from 'body-scroll-lock-upgrade'
 
 import Container from './Container'
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { ListProps, SortItem, SortContent } from '@/types/portfolio'
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock-upgrade'
 
 import Container from '@/components/common/Container'
 import Title from '@/components/common/Title'
@@ -231,11 +231,11 @@ export default function Index() {
     }
 
     // scrollLock
-    // if (isMobile && floatClick) {
-    //   disableBodyScroll(floatRef.current!)
-    // } else {
-    //   enableBodyScroll(floatRef.current!)
-    // }
+    if (isMobile && floatClick) {
+      disableBodyScroll(floatRef.current!)
+    } else {
+      enableBodyScroll(floatRef.current!)
+    }
   }, [floatClick, isMobile])
 
   return (
