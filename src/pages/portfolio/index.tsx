@@ -240,12 +240,12 @@ export default function Index() {
     }
 
     // scrollLock
-    const scrollTargetElement = document.querySelector('body')
-    if (isMobile && floatClick) {
-      lock(scrollTargetElement, { overflowType: 'clip' })
-    } else {
-      unlock(scrollTargetElement)
-    }
+    // const scrollTargetElement = document.querySelector('body')
+    // if (isMobile && floatClick) {
+    //   lock(scrollTargetElement, { overflowType: 'clip' })
+    // } else {
+    //   unlock(scrollTargetElement)
+    // }
   }, [floatClick, isMobile])
 
   return (
