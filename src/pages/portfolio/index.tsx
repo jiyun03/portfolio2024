@@ -240,12 +240,14 @@ export default function Index() {
     }
 
     // scrollLock
-    // const scrollTargetElement = document.querySelector('body')
-    // if (isMobile && floatClick) {
-    //   lock(scrollTargetElement, { overflowType: 'clip' })
-    // } else {
-    //   unlock(scrollTargetElement)
-    // }
+    const scrollTargetElement = document.querySelector('.sort')
+    if (scrollTargetElement instanceof HTMLElement) {
+      if (isMobile && floatClick) {
+        lock(scrollTargetElement, { overflowType: 'clip' })
+      } else {
+        unlock(scrollTargetElement)
+      }
+    }
   }, [floatClick, isMobile])
 
   return (
@@ -407,6 +409,8 @@ const ToolWrapper = styled.div`
       background-color: ${({ theme }) => theme.btnDark};
       cursor: pointer;
       svg {
+        width: 15rem;
+        height: 15rem;
         path {
           fill: #fff;
         }
