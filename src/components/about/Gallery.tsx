@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { lock, unlock } from 'tua-body-scroll-lock'
 
 import Ratio from '@/components/common/Ratio'
 import Portal from '@/components/common/Portal'
@@ -25,9 +26,23 @@ export default function Gallery({ images }: GalleryTypes) {
     setOpen(!open)
   }
 
+  // 갤러리 - index
   useEffect(() => {
     setImage(images[imageIndex])
   }, [imageIndex, images])
+
+  // 갤러리 - 스크롤락
+  useEffect(() => {
+    const scrollTargetElement = document.querySelector('.gallery__modal')
+
+    if (scrollTargetElement instanceof HTMLElement) {
+      if (open) {
+        lock(scrollTargetElement)
+      } else {
+        unlock(scrollTargetElement)
+      }
+    }
+  }, [open])
 
   return (
     <GalleryWrapper>
@@ -42,7 +57,9 @@ export default function Gallery({ images }: GalleryTypes) {
                 setImageIndex(index)
               }}
             >
-              <Ratio ratio="1_1" src={img.src} />
+              <div className="gallery__img">
+                <Ratio ratio="1_1" src={img.src} />
+              </div>
             </div>
           )
         })}
@@ -50,26 +67,32 @@ export default function Gallery({ images }: GalleryTypes) {
       {open && (
         <Portal dimmed={dimmedClick}>
           <GalleryModal>
-            <Image src={image.src} width={0} height={0} sizes="100vw" alt="갤러리 이미지" />
-            <div className="gallery__title">{image.desc}</div>
-            <IC_Arrow_Right
-              onClick={() => {
-                if (imageIndex === 0) {
-                  setImageIndex(images.length - 1)
-                } else {
-                  setImageIndex(imageIndex - 1)
-                }
-              }}
-            />
-            <IC_Arrow_Right
-              onClick={() => {
-                if (imageIndex + 1 === images.length) {
-                  setImageIndex(0)
-                } else {
-                  setImageIndex(imageIndex + 1)
-                }
-              }}
-            />
+            <div className="gallery__modal">
+              <Image src={image.src} width={0} height={0} sizes="100vw" alt="갤러리 이미지" />
+              <div className="gallery__title">{image.desc}</div>
+              <div className="gallery__arrow-wrap">
+                <IC_Arrow_Right
+                  className="gallery__arrow gallery__arrow--left"
+                  onClick={() => {
+                    if (imageIndex === 0) {
+                      setImageIndex(images.length - 1)
+                    } else {
+                      setImageIndex(imageIndex - 1)
+                    }
+                  }}
+                />
+                <IC_Arrow_Right
+                  className="gallery__arrow gallery__arrow--right"
+                  onClick={() => {
+                    if (imageIndex + 1 === images.length) {
+                      setImageIndex(0)
+                    } else {
+                      setImageIndex(imageIndex + 1)
+                    }
+                  }}
+                />
+              </div>
+            </div>
           </GalleryModal>
         </Portal>
       )}
@@ -92,32 +115,67 @@ const GalleryWrapper = styled.div`
         flex: 0 0 50%;
         max-width: 50%;
       `}
-      .ratio__content {
-        border-radius: 15rem;
-      }
+    }
+    &__img {
+      border: ${({ theme }) => theme.borderColor};
+      border-radius: 10rem;
+      overflow: hidden;
     }
   }
 `
 
 const GalleryModal = styled.div`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  img {
-    max-width: 80vw;
-    max-height: 100%;
-    width: 100%;
-    height: auto;
-    border-radius: 30rem;
-  }
-  svg {
-    width: 100rem;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100rem 0;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
   .gallery {
+    &__modal {
+      position: relative;
+      width: 100%;
+      max-width: 50%;
+      margin: auto;
+      ${({ theme }) => theme.lg`
+        max-width: 70%;
+      `}
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 30rem;
+      }
+    }
     &__title {
-      font-size: 18rem;
-      //   color: ;
+      margin-top: 5rem;
+      font-size: 20rem;
+    }
+    &__arrow {
+      position: fixed;
+      top: calc(50% - 50rem);
+      width: 100rem;
+      cursor: pointer;
+      pointer-events: auto;
+      ${({ theme }) => theme.sm`
+        position: relative;
+        width: 50rem;
+      `}
+      path {
+        fill: ${({ theme }) => theme.textColor};
+      }
+      &-wrap {
+        ${({ theme }) => theme.sm`
+          text-align: right;
+        `}
+      }
+      &--left {
+        left: 0;
+        transform: rotate(180deg);
+      }
+      &--right {
+        right: 0;
+      }
     }
   }
 `

@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
     src: url('/fonts/Montserrat/Montserrat-SemiBold.woff2') format('woff2'),
         url('/fonts/Montserrat/Montserrat-SemiBold.woff') format('woff'),
         url('/fonts/Montserrat/Montserrat-SemiBold.svg#Montserrat-SemiBold') format('svg');
+    unicode-range:U+0041-005A, U+0061-007A, U+0030-0039;
   }
   // SaolDisplay
   @font-face {
@@ -122,6 +123,13 @@ export const GlobalStyle = createGlobalStyle`
     background: ${({ theme }) => theme.bgPoint};
     body {
       background: ${({ theme }) => theme.bgColor};
+    }
+  }
+
+  // about
+  .page-about {
+    .dimmed__child {
+      height: 100%;
     }
   }
 `

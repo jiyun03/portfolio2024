@@ -22,6 +22,7 @@ const TitleWrapper = styled.div`
     &__title {
       font-size: 48rem;
       font-weight: 700;
+      font-family: 'Montserrat', 'AppleSDGothicNeo';
     }
     &__subtitle {
       font-size: 19.2rem;
