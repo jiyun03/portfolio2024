@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
+import { GalleryImage } from '@/types/about'
 import { lock, unlock } from 'tua-body-scroll-lock'
 
 import Ratio from '@/components/common/Ratio'
@@ -8,13 +9,8 @@ import Portal from '@/components/common/Portal'
 import styled from 'styled-components'
 import IC_Arrow_Right from '/public/assets/icons/arrow_right.svg'
 
-interface ImageType {
-  src: string
-  desc: string
-}
-
 interface GalleryTypes {
-  images: ImageType[]
+  images: GalleryImage[]
 }
 
 export default function Gallery({ images }: GalleryTypes) {

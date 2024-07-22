@@ -9,7 +9,7 @@ interface TitleProps {
 
 export default function Title({ content }: TitleProps) {
   return (
-    <TitleWrapper>
+    <TitleWrapper className="title">
       <div className="title__title">{content.title}</div>
       <div className="title__subtitle">{content.subtitle}</div>
     </TitleWrapper>
