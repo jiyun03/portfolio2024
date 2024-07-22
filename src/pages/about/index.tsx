@@ -36,8 +36,12 @@ export default function About() {
           title: '2022.01',
           content: [
             {
+              subtitle: '2022.05 ~ 2022.07',
+              title: '리액트 프론트엔드 개발 실무과정 수강',
+            },
+            {
               subtitle: '2022.01 ~ 2024.05',
-              title: '디파이 입사',
+              title: '웹에이전시 디파이 입사',
             },
           ],
         },
@@ -63,12 +67,12 @@ export default function About() {
           title: '2019.02',
           content: [
             {
-              subtitle: '2015.03 ~ 2019.02',
-              title: '물리학과 졸업',
-            },
-            {
               subtitle: '2019.02 ~ 2019.08',
               title: '그린컴퓨터아카데미 인천 모바일 UIUX(웹디자인, 웹퍼블리셔) 실무자양성과정 수강',
+            },
+            {
+              subtitle: '2015.03 ~ 2019.02',
+              title: '물리학과 졸업',
             },
           ],
         },
@@ -78,7 +82,7 @@ export default function About() {
       skill: [
         {
           title: 'Front-End',
-          content: ['react', 'vue', 'nuxt', 'next', 'vanillajs', 'typescript', 'jquery', 'html5', 'css3', 'scss', 'bootstrap'],
+          content: ['react', 'vue', 'next', 'nuxt', 'vanillajs', 'typescript', 'jquery', 'html5', 'css3', 'scss', 'bootstrap'],
         },
         {
           title: 'Design',
@@ -136,7 +140,9 @@ export default function About() {
       {/* 어바웃  */}
       <AboutWrapper>
         <AboutItem number="01" name="PROFILE" item={aboutArray[0]}>
-          <Image src="/assets/img/about/smile.png" width="300" height="300" alt="얼굴 이미지" />
+          <div className="profile__img">
+            <Image src="/assets/img/about/smile.png" width={0} height={0} sizes="100%" alt="얼굴 이미지" />
+          </div>
         </AboutItem>
         <AboutItem number="02" name="EXPERIENCE" item={aboutArray[1]} />
         <AboutItem number="03" name="SKILL & SKILL TOOL" item={aboutArray[2]} />
@@ -182,6 +188,7 @@ const TitleWrapper = styled.div`
 `
 
 const AboutTitleWrapper = styled.div`
+  margin: 50rem 0 30rem;
   font-size: 30rem;
   font-weight: 600;
   .emoji {
@@ -193,4 +200,94 @@ const AboutTitleWrapper = styled.div`
   }
 `
 
-const AboutWrapper = styled.div``
+const AboutWrapper = styled.div`
+  .about {
+    &__item {
+      margin-bottom: 70rem;
+
+      // profile
+      &--profile {
+        .about {
+          &__content {
+            flex-basis: 0;
+            flex-grow: 1;
+            max-width: 100%;
+            &__title {
+              ${({ theme }) => theme.sm`
+                flex: 0 0 30%;
+                max-width: 30%;
+                margin-bottom: 0;
+              `}
+            }
+            &__content {
+              ${({ theme }) => theme.sm`
+                flex: 0 0 70%;
+                max-width: 70%;
+              `}
+            }
+            &-wrap {
+              display: flex;
+              flex-wrap: wrap;
+              ${({ theme }) => theme.sm`
+                display: block;
+              `}
+            }
+            &-item {
+              margin-bottom: 10rem;
+              ${({ theme }) => theme.sm`
+                display: flex;
+              `}
+            }
+          }
+        }
+        .profile__img {
+          flex: 0 0 auto;
+          width: auto;
+          max-width: 100%;
+          margin-right: 40rem;
+          ${({ theme }) => theme.sm`
+            margin-right: 0;
+            margin-bottom: 20rem;
+          `}
+          img {
+            width: 180rem;
+            height: 180rem;
+            border-radius: 8rem;
+            overflow: hidden;
+            ${({ theme }) => theme.sm`
+              width: 140rem;
+              height: 140rem;
+            `}
+          }
+        }
+      }
+
+      // skill
+      &--skill {
+        .about__content__content {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .content-item {
+          margin-right: 40rem;
+          margin-bottom: 10rem;
+          text-align: center;
+          &__title {
+            font-size: 16rem;
+          }
+        }
+      }
+
+      // license
+      &--license {
+        .about__content-item {
+          .content-item {
+            ${({ theme }) => theme.sm`
+              margin-bottom: 5rem;
+            `}
+          }
+        }
+      }
+    }
+  }
+`
