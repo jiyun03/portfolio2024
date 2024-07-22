@@ -36,7 +36,7 @@ export default function About() {
           title: '2022.01',
           content: [
             {
-              subtitle: '2022.05 ~ 2022.07',
+              subtitle: '2022.05 ~ 2022.08',
               title: '리액트 프론트엔드 개발 실무과정 수강',
             },
             {
@@ -90,7 +90,7 @@ export default function About() {
         },
         {
           title: 'Design 협업툴',
-          content: ['zeplin', 'figma', 'xd'],
+          content: ['zeplin', 'figma'],
         },
         {
           title: '협업툴',
@@ -126,7 +126,7 @@ export default function About() {
           }}
         />
         <div className="btn-wrap">
-          <Link href="https://outgoing-manager-a91.notion.site/aaeb5293678643f0af8c7d9bf653ad1a?pvs=25" className="btn">
+          <Link href="https://outgoing-manager-a91.notion.site/aaeb5293678643f0af8c7d9bf653ad1a?pvs=25" target="_blank" className="btn">
             이력서 보러가기
           </Link>
         </div>

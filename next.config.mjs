@@ -4,6 +4,7 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  transpilePackages: ['three'],
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
