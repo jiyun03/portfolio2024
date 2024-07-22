@@ -135,7 +135,7 @@ export default function About() {
       <Gallery images={galleryArray} />
       {/* 타이틀 */}
       <AboutTitleWrapper>
-        <span className="emoji">👋</span> 안녕하세요! 박지윤 입니다.
+        <span className="emoji">👋</span> 안녕하세요! 박지윤입니다.
       </AboutTitleWrapper>
       {/* 어바웃  */}
       <AboutWrapper>

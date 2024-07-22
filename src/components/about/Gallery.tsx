@@ -29,7 +29,7 @@ export default function Gallery({ images }: GalleryTypes) {
 
   // 갤러리 - 스크롤락
   useEffect(() => {
-    const scrollTargetElement = document.querySelector('.gallery__modal')
+    const scrollTargetElement = document.querySelector('.gallery')
 
     if (scrollTargetElement instanceof HTMLElement) {
       if (open) {
