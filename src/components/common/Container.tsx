@@ -16,7 +16,7 @@ export default function Container({ type = '', children }: ContainerProps) {
 const ContainerWrapper = styled.div<{ $type: string }>`
   width: 100%;
   padding: 0 24rem;
-  margin-top: 64rem;
+  margin-top: 40rem;
   margin-left: auto;
   margin-right: auto;
   ${({ $type }) =>
@@ -26,5 +26,6 @@ const ContainerWrapper = styled.div<{ $type: string }>`
   `}
   ${({ theme }) => theme.sm`
     padding: 0 15px;
+    margin-top: 20rem;
   `}
 `
