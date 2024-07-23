@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 
@@ -15,15 +15,20 @@ export default function Index() {
   const defaultColor = '#00355c'
   const [targetZoom, setTargetZoom] = useState(1)
   const [cardColor, setCardColor] = useState(defaultColor)
+  const [reset, setReset] = useState(false)
 
   const zoomIn = () => setTargetZoom((prevZoom) => prevZoom * 1.2)
   const zoomOut = () => setTargetZoom((prevZoom) => prevZoom / 1.2)
 
-  // 초기화 함수
-  const resetSettings = () => {
+  const resetSettings = useCallback(() => {
     setCardColor(defaultColor)
     setTargetZoom(1)
-  }
+    setReset(true)
+  }, [])
+
+  const handleResetComplete = useCallback(() => {
+    setReset(false)
+  }, [])
 
   return (
     <Container>
@@ -40,7 +45,7 @@ export default function Index() {
           <pointLight position={[-10, -10, -10]} decay={0} intensity={0.5} />
           <BusinessCard cardColor={cardColor} />
           <OrbitControls />
-          <CameraController targetZoom={targetZoom} />
+          <CameraController targetZoom={targetZoom} reset={reset} onResetComplete={handleResetComplete} />
         </Canvas>
         <ColorPalette onColorChange={setCardColor} />
         <ZoomControls onZoomIn={zoomIn} onZoomOut={zoomOut} onReset={resetSettings} />
