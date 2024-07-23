@@ -59,6 +59,9 @@ const ContactWrapper = styled.div`
   height: calc(100vh - 350px);
   width: 100%;
   overflow: hidden;
+  ${({ theme }) => theme.sm`
+    height: calc(100vh - 320px);
+  `}
   canvas {
     background-color: #c8daff;
     height: 100%;
