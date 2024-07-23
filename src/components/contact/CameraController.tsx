@@ -23,11 +23,12 @@ export default function CameraController({ targetZoom, reset, onResetComplete }:
   }, [reset, camera, onResetComplete])
 
   useFrame(() => {
-    if (!reset) {
-      const newZoom = THREE.MathUtils.lerp(camera.zoom, targetZoom, 0.1)
-      camera.zoom = newZoom
-      camera.updateProjectionMatrix()
-    }
+    const newZoom = THREE.MathUtils.lerp(camera.zoom, targetZoom, 0.1)
+    camera.zoom = newZoom
+    camera.updateProjectionMatrix()
+
+    const zoomFactor = targetZoom / camera.zoom
+    camera.position.set(camera.position.x * zoomFactor, camera.position.y * zoomFactor, camera.position.z * zoomFactor)
   })
 
   return null
