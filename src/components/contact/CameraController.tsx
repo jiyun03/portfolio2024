@@ -15,8 +15,8 @@ export default function CameraController({ targetZoom, reset, onResetComplete }:
 
   useEffect(() => {
     if (reset) {
-      camera.position.set(0, 0, 5)
-      camera.zoom = 1
+      camera.position.copy(initialPosition.current)
+      camera.zoom = initialZoom.current
       camera.updateProjectionMatrix()
       onResetComplete()
     }

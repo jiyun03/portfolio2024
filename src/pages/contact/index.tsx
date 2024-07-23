@@ -44,7 +44,7 @@ export default function Index() {
           <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
           <pointLight position={[-10, -10, -10]} decay={0} intensity={0.5} />
           <BusinessCard cardColor={cardColor} />
-          <OrbitControls />
+          <OrbitControls enablePan={false} />
           <CameraController targetZoom={targetZoom} reset={reset} onResetComplete={handleResetComplete} />
         </Canvas>
         <ColorPalette onColorChange={setCardColor} />
