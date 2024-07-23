@@ -134,18 +134,22 @@ const GalleryModal = styled.div`
       width: 100%;
       max-width: 50%;
       margin: auto;
+      font-size: 0;
       ${({ theme }) => theme.lg`
         max-width: 70%;
       `}
       img {
         width: 100%;
         height: auto;
-        border-radius: 30rem;
+        border-radius: 20rem 20rem 0 0;
       }
     }
     &__title {
-      margin-top: 5rem;
-      font-size: 20rem;
+      padding: 13rem 20rem;
+      font-size: 16rem;
+      background-color: #222;
+      color: #fff;
+      border-radius: 0 0 20rem 20rem;
     }
     &__arrow {
       position: fixed;

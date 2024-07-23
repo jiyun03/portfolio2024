@@ -13,10 +13,10 @@ export default function About() {
   const galleryArray: GalleryImage[] = [
     {
       src: '/assets/img/about/conference.jpg',
-      desc: '최신 개발 지식에 대해 공부하고 그에 대해 이야기 나누는 것을 좋아하여 컨퍼런스에 참여하는 것을 좋아해요',
+      desc: '최신 개발 지식에 대해 공부하고 그에 대해 이야기 나누는 것을 좋아해요',
     },
     { src: '/assets/img/about/swim.jpg', desc: '물놀이를 좋아해서 수영을 배우고 있어요' },
-    { src: '/assets/img/about/memo.jpg', desc: '기록하고 정리하여 공유하는 것을 즐겨요' },
+    { src: '/assets/img/about/memo.jpg', desc: '기록을 정리하여 공유하는 것을 즐겨요' },
     { src: '/assets/img/about/band.jpg', desc: '밴드 음악을 좋아해서 기타를 배운적이 있어요' },
   ]
 
@@ -135,7 +135,7 @@ export default function About() {
       <Gallery images={galleryArray} />
       {/* 타이틀 */}
       <AboutTitleWrapper>
-        <span className="emoji">👋</span> 안녕하세요! 박지윤입니다.
+        <span className="emoji">👋</span> 안녕하세요! 사용자의 입장에서 생각하는 개발자 박지윤입니다.
       </AboutTitleWrapper>
       {/* 어바웃  */}
       <AboutWrapper>
