@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { Text, useTexture, Plane } from '@react-three/drei'
 
-export default function Card({ cardColor }: { cardColor: string }) {
+export default function BusinessCard({ cardColor }: { cardColor: string }) {
   const ref = useRef<THREE.Group>(null)
   const [cardHover, setCardHover] = useState(false)
 
@@ -36,7 +36,7 @@ export default function Card({ cardColor }: { cardColor: string }) {
       </mesh>
 
       {/* 앞면 */}
-      <Plane args={[4.1, 0.02]} position={[0, -0.8, 0.06]}>
+      <Plane args={[4.1, 0.02]} position={[0, 0, 0.06]}>
         <meshStandardMaterial color="#ffffff" />
       </Plane>
       <Plane args={[3, 0.9]} position={[-0.5, 0.55, 0.06]}>

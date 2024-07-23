@@ -15,8 +15,8 @@ export default function CameraController({ targetZoom, reset, onResetComplete }:
 
   useEffect(() => {
     if (reset) {
-      camera.position.copy(initialPosition.current)
-      camera.zoom = initialZoom.current
+      camera.position.set(0, 0, 5)
+      camera.zoom = 1
       camera.updateProjectionMatrix()
       onResetComplete()
     }
@@ -26,9 +26,6 @@ export default function CameraController({ targetZoom, reset, onResetComplete }:
     const newZoom = THREE.MathUtils.lerp(camera.zoom, targetZoom, 0.1)
     camera.zoom = newZoom
     camera.updateProjectionMatrix()
-
-    const zoomFactor = targetZoom / camera.zoom
-    camera.position.set(camera.position.x * zoomFactor, camera.position.y * zoomFactor, camera.position.z * zoomFactor)
   })
 
   return null
