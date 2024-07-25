@@ -2,15 +2,20 @@ import { useEffect, useRef, useState, useCallback, useMemo } from 'react'
 
 import styled, { keyframes } from 'styled-components'
 
-export default function Drop() {
+interface DropProps {
+  isMobile: boolean
+  isLight: boolean
+}
+
+export default function Drop({ isMobile, isLight }: DropProps) {
   const [windowWidth, setWindowWidth] = useState<number>(typeof window !== 'undefined' ? window.innerWidth : 0)
-  const [isMobile, setIsMobile] = useState<boolean>(false)
-  const [reactingInterval, setReactingInterval] = useState<NodeJS.Timeout | null>(null)
+  const [isMobileWidth, setIsMobileWidth] = useState<boolean>(false) // 768
+  const [dropInterval, setDropInterval] = useState<NodeJS.Timeout | null>(null)
   const dropElement = useRef<HTMLDivElement | null>(null)
 
   // 옵션
-  const particleMax = isMobile ? 6 : 10
-  const reactingSetTime = 1500
+  const particleMax = isMobileWidth ? 6 : 10
+  const dropSetTime = 1500
   const dropImg = useMemo(() => {
     const images = []
     for (let i = 1; i <= 38; i++) {
@@ -19,13 +24,13 @@ export default function Drop() {
     return images
   }, [])
 
-  const reactingInit = useCallback(() => {
+  const dropInit = useCallback(() => {
     if (!dropElement.current) return
 
     const dropImgLength = dropImg.length
 
     // 랜덤 환경 설정
-    const randomWidth = isMobile ? randomUnitInterval(75, 100, 10) : randomUnitInterval(120, 150, 20)
+    const randomWidth = isMobileWidth ? randomUnitInterval(75, 100, 10) : randomUnitInterval(120, 150, 20)
     const randomRotate = randomInterval(-10, 10)
     const randomIndex = randomInterval(0, dropImgLength - 1)
     const randomX = Math.random() * (windowWidth - 100)
@@ -39,13 +44,13 @@ export default function Drop() {
     createImg.style.height = randomWidth + 'rem'
     createImg.style.left = randomX + 'px'
     createImg.style.transform = `rotate(${randomRotate}deg)`
-    createImg.style.animationDuration = `${reactingSetTime / 1000}s`
+    createImg.style.animationDuration = `${dropSetTime / 1000}s`
 
     // 이미지가 최대 particle 수 보다 커지면 remove
     if (dropElement.current.childElementCount > particleMax) {
       dropElement.current.removeChild(dropElement.current.firstElementChild!)
     }
-  }, [dropImg, isMobile, windowWidth, particleMax])
+  }, [dropImg, isMobileWidth, windowWidth, particleMax])
 
   // random 최대, 최소값 설정
   const randomInterval = (min: number, max: number): number => {
@@ -56,30 +61,30 @@ export default function Drop() {
     return Math.floor(Math.random() * ((Math.floor(max) - Math.ceil(min)) / unit + 1)) * unit + Math.ceil(min)
   }
 
-  const reactingActive = useCallback(() => {
+  const dropActive = useCallback(() => {
     if (dropElement.current) {
-      const interval = setInterval(() => reactingInit(), reactingSetTime / particleMax)
-      setReactingInterval(interval)
+      const interval = setInterval(() => dropInit(), dropSetTime / particleMax)
+      setDropInterval(interval)
       document.querySelector<HTMLAnchorElement>('.page-home')?.classList.add('s-active')
     }
-  }, [particleMax, reactingInit])
+  }, [particleMax, dropInit])
 
-  const reactingClear = useCallback(() => {
-    if (dropElement.current && reactingInterval) {
-      clearInterval(reactingInterval)
-      setReactingInterval(null)
+  const dropClear = useCallback(() => {
+    if (dropElement.current && dropInterval) {
+      clearInterval(dropInterval)
+      setDropInterval(null)
       dropElement.current.replaceChildren()
     }
     document.querySelector<HTMLAnchorElement>('.page-home')?.classList.remove('s-active')
-  }, [reactingInterval])
+  }, [dropInterval])
 
   // 윈도우 리사이즈 이벤트 핸들러
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
-        setIsMobile(true)
+        setIsMobileWidth(true)
       } else {
-        setIsMobile(false)
+        setIsMobileWidth(false)
       }
       setWindowWidth(window.innerWidth)
     }
@@ -91,24 +96,33 @@ export default function Drop() {
   // 이벤트
   useEffect(() => {
     const btnElement = document.querySelector<HTMLAnchorElement>('.drop__btn')
-    if (btnElement) {
-      btnElement.addEventListener('mouseenter', reactingActive)
-      btnElement.addEventListener('mouseleave', reactingClear)
+    if (btnElement && !isMobile) {
+      btnElement.addEventListener('mouseenter', dropActive)
+      btnElement.addEventListener('mouseleave', dropClear)
     }
     return () => {
-      if (btnElement) {
-        btnElement.removeEventListener('mouseenter', reactingActive)
-        btnElement.removeEventListener('mouseleave', reactingClear)
+      if (btnElement && !isMobile) {
+        btnElement.removeEventListener('mouseenter', dropActive)
+        btnElement.removeEventListener('mouseleave', dropClear)
       }
     }
-  }, [reactingActive, reactingClear])
+  }, [isMobile, dropActive, dropClear])
+
+  // 모바일 기기 light 기능
+  useEffect(() => {
+    if (isMobile && isLight) {
+      dropActive()
+    } else {
+      dropClear()
+    }
+  }, [isMobile, isLight])
 
   return <DropWrapper className="drop" ref={dropElement} />
 }
 
 const dropDown = keyframes`
   0%   { top: -150rem; }
-  100% { top: 100vh;}
+  100% { top: 100vh; }
 `
 
 const DropWrapper = styled.div`

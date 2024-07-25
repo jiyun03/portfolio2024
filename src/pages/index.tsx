@@ -6,25 +6,40 @@ import Wave from '@/components/home/Wave'
 import Drop from '@/components/home/Drop'
 
 import styled from 'styled-components'
+import IC_LightOn from '/public/assets/icons/light_on.svg'
+import IC_LightOff from '/public/assets/icons/light_off.svg'
 
 export default function Home() {
   const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isMobileWidth, setIsMobileWidth] = useState<boolean>(false) // 600
+  const [isLight, setIsLight] = useState<boolean>(false)
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 600)
+    const handleResize = () => {
+      setIsMobileWidth(window.innerWidth <= 600)
+      // 모바일 기기 감지 (ipad 이슈로 maxTouchPoints 감지 추가)
+      setIsMobile(
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone/i.test(window.navigator.userAgent) ||
+          window.navigator.maxTouchPoints >= 1
+      )
+      // 모바일 아닐 경우 light 감춤
+      if (!isMobile) {
+        setIsLight(false)
+      }
+    }
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  }, [isMobile])
 
-  const subtitle = isMobile
+  const subtitle = isMobileWidth
     ? '안녕하세요 최신 개발 지식에 관심이 많은 🌐\n사용자의 입장에서 생각하는 👥\n지식을 공유하는 개발자를 목표로 하는 👩🏻‍💻\n개발자 박지윤입니다.'
     : '안녕하세요 최신 개발 지식에 관심이 많은 🌐 사용자의 입장에서 생각하는 👥\n지식을 공유하는 개발자를 목표로 하는 👩🏻‍💻 개발자 박지윤입니다.'
 
   return (
     <HomeWrapper>
       <Container>
-        <Drop />
+        <Drop isLight={isLight} isMobile={isMobile} />
         <Title
           content={{
             title: "WELCOME\nJIYUN's PORTFOLIO",
@@ -35,7 +50,13 @@ export default function Home() {
               class: 'drop__btn',
             },
           }}
-        />
+        >
+          {isMobile && (
+            <button className="light" onClick={() => setIsLight(!isLight)}>
+              {isLight ? <IC_LightOn /> : <IC_LightOff />}
+            </button>
+          )}
+        </Title>
         <Wave />
       </Container>
     </HomeWrapper>
@@ -91,6 +112,23 @@ const HomeWrapper = styled.div`
         margin-top: 30rem;
         padding: 13rem 30rem;
         font-size: 18rem;
+      `}
+    }
+  }
+  .light {
+    position: absolute;
+    bottom: 8rem;
+    left: calc(50% + 170rem);
+    transform: translateX(-50%);
+    ${({ theme }) => theme.md`
+      bottom: 3rem;
+      left: calc(50% + 130rem);
+      transform: translateX(-50%);
+    `}
+    svg {
+      width: 40rem;
+      ${({ theme }) => theme.md`
+        width: 32rem;
       `}
     }
   }

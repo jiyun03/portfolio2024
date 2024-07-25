@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, useCallback, useEffect } from 'react'
+import { ReactNode, createContext, useState, useContext, useCallback, useEffect } from 'react'
 
 import { lightTheme, darkTheme } from '@/theme/theme'
 import media from '@/theme/media'
@@ -11,7 +11,7 @@ interface ThemeContextProps {
 }
 
 interface ThemeProviderProps {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 const ThemeContext = createContext<ThemeContextProps>({ themeMode: '', setThemeMode: () => {} })

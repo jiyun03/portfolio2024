@@ -12,9 +12,10 @@ interface TitleProps {
       class?: string
     }
   }
+  children?: React.ReactNode
 }
 
-export default function Title({ content }: TitleProps) {
+export default function Title({ content, children }: TitleProps) {
   return (
     <TitleWrapper className="title">
       <div className="title__title">{content.title}</div>
@@ -24,11 +25,13 @@ export default function Title({ content }: TitleProps) {
           {content.link.title}
         </Link>
       )}
+      {children && children}
     </TitleWrapper>
   )
 }
 
 const TitleWrapper = styled.div`
+  position: relative;
   margin-bottom: 48rem;
   white-space: pre-line;
   .title {
