@@ -25,12 +25,12 @@ export default function Nav({ show }: NavProps) {
   const { route } = useRouter()
   const menuList: MenuItem[] = [
     {
-      title: 'Point Portfolio',
+      title: 'Point Project',
       link: '/point',
       img: '/assets/img/common/menu_point.jpg',
     },
     {
-      title: 'Portfolio',
+      title: 'All Project',
       link: '/portfolio',
       img: '/assets/img/common/menu_portfolio.jpg',
     },

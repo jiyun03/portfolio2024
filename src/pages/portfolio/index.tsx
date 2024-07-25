@@ -54,7 +54,7 @@ export default function Index() {
       item: [
         { id: 'individual', name: '개인' },
         { id: 'dfy', name: 'DFY' },
-        { id: 'sprint', name: '스프린트' },
+        { id: 'sprint', name: 'SPRINT' },
       ],
     },
     {
@@ -255,7 +255,7 @@ export default function Index() {
       {/* Title */}
       <Title
         content={{
-          title: '프로젝트 목록',
+          title: 'ALL PROJECT',
           subtitle: '재직 중 작업한 프로젝트 목록입니다.\n모든 사이트는 반응형으로 제작되었습니다 :)',
         }}
       />

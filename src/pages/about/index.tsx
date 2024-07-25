@@ -41,7 +41,7 @@ export default function About() {
             },
             {
               subtitle: '2022.01 ~ 2024.05',
-              title: '웹에이전시 디파이 입사',
+              title: '웹에이전시 DFY 입사',
             },
           ],
         },
@@ -50,7 +50,7 @@ export default function About() {
           content: [
             {
               subtitle: '2020.02 ~ 2021.11',
-              title: '웹에이전시 스프린트 입사',
+              title: '웹에이전시 SPRINT 입사',
             },
           ],
         },
@@ -135,7 +135,7 @@ export default function About() {
       <Gallery images={galleryArray} />
       {/* 타이틀 */}
       <AboutTitleWrapper>
-        <span className="emoji">👋</span> 안녕하세요! 사용자의 입장에서 생각하는 개발자 박지윤입니다.
+        <span className="emoji">👋</span> 안녕하세요! 박지윤입니다.
       </AboutTitleWrapper>
       {/* 어바웃  */}
       <AboutWrapper>

@@ -32,7 +32,7 @@ export default function Index() {
       <Container>
         <Title
           content={{
-            title: '포인트 포트폴리오 목록',
+            title: 'POINT PROJECT',
             subtitle: '재직 중 작업한 프로젝트 중 포인트가 있는 프로젝트 목록입니다.\n최근 작업한 프로젝트로 구성되어 있습니다 :)',
           }}
         />

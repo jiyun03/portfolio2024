@@ -73,7 +73,7 @@ const PointItemWrapper = styled.div`
       display: block;
       transition: transform 0.3s;
       &:hover {
-        transform: translateY(-30px);
+        transform: translateY(-20px);
         ${({ theme }) => theme.xl`
           transform: translateY(-10px);
         `}
