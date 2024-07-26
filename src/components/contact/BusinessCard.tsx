@@ -17,7 +17,7 @@ export default function BusinessCard({ cardColor }: { cardColor: string }) {
 
   useFrame(() => {
     if (ref.current && !cardHover) {
-      // ref.current.rotation.y += 0.01
+      ref.current.rotation.y += 0.01
     }
   })
 
