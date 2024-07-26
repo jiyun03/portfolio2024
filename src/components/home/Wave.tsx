@@ -112,5 +112,6 @@ const CanvasWrapper = styled.div`
     left: 0;
     right: 0;
     pointer-events: none;
+    z-index: 2;
   }
 `
