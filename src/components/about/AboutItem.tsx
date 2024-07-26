@@ -88,7 +88,7 @@ const ItemContentWrapper = styled.div`
               `}
             }
             &__subtitle {
-              font-family: 'Montserrat', 'AppleSDGothicNeo';
+              font-family: 'Montserrat';
               font-size: 14rem;
               color: ${({ theme }) => theme.textColor3};
             }
