@@ -9,6 +9,7 @@ import { GlobalStyle } from '@/theme/GlobalStyle'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
+  const is404 = router.pathname === '/404'
 
   useEffect(() => {
     const handleRouteChange = (url: string) => {
@@ -34,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta property="og:image" content="/assets/img/common/menu_point.jpg" />
         <meta property="og:url" content="https://sprare06.vercel.app" />
       </Head>
-      <Header />
+      {!is404 && <Header />}
       <Component {...pageProps} />
     </ThemeProvider>
   )
