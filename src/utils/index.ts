@@ -1,10 +1,6 @@
 import { createElement } from 'react'
 
 // JSON TO HTML
-function escapeHtml(unsafe: string) {
-  return unsafe.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;')
-}
-
 export function parseHtmlString(htmlString: string): JSX.Element[] {
   const parser = new DOMParser()
   const doc = parser.parseFromString(htmlString, 'text/html')
