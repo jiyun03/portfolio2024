@@ -9,7 +9,7 @@ interface CameraControllerProps {
 }
 
 export default function CameraController({ targetZoom, reset, onResetComplete }: CameraControllerProps) {
-  const { camera } = useThree()
+  const { camera, gl } = useThree()
   const initialPosition = useRef(camera.position.clone())
   const initialZoom = useRef(camera.zoom)
 
@@ -27,6 +27,13 @@ export default function CameraController({ targetZoom, reset, onResetComplete }:
     camera.zoom = newZoom
     camera.updateProjectionMatrix()
   })
+
+  // unmount 시 WebGL Dispose
+  useEffect(() => {
+    return () => {
+      gl.dispose()
+    }
+  }, [gl])
 
   return null
 }
