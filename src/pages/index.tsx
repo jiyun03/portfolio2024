@@ -99,8 +99,9 @@ const HomeWrapper = styled.div`
     }
     .drop__btn {
       margin-top: 40rem;
-      padding: 15rem 35rem 19rem;
+      padding: 25rem 35rem;
       font-size: 25rem;
+      line-height: 1;
       transition: background 0.3s, color 0.3s;
       ${({ theme }) => theme.xl`
         font-size: 23rem;
@@ -110,7 +111,7 @@ const HomeWrapper = styled.div`
       `}
       ${({ theme }) => theme.md`
         margin-top: 30rem;
-        padding: 13rem 30rem;
+        padding: 20rem 30rem;
         font-size: 18rem;
       `}
     }
