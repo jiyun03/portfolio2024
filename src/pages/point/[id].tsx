@@ -239,15 +239,18 @@ const KindsWrapper = styled.div`
   flex-wrap: wrap;
   margin: 30rem -20rem 0 -20rem;
   ${({ theme }) => theme.md`
-    margin: 30rem -10px 0 -10px;
+    margin: 30rem 0 0;
   `}
   .kind {
     &__item {
       margin: 0 20rem;
       width: calc(33.3333% - 40rem);
       ${({ theme }) => theme.md`
-        margin: 0 10px;
-        width: calc(33.3333% - 20px);
+        margin: 0;
+        width: 100%;
+        &:not(:last-child) {
+          margin-bottom: 25rem;
+        }
       `}
     }
     &__title {
