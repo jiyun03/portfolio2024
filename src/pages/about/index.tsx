@@ -126,9 +126,9 @@ export default function About() {
           }}
         />
         <div className="btn-wrap">
-          <Link href="https://outgoing-manager-a91.notion.site/aaeb5293678643f0af8c7d9bf653ad1a?pvs=25" target="_blank" className="btn">
+          {/* <Link href="https://outgoing-manager-a91.notion.site/aaeb5293678643f0af8c7d9bf653ad1a?pvs=25" target="_blank" className="btn">
             이력서 보러가기
-          </Link>
+          </Link> */}
         </div>
       </TitleWrapper>
       {/* 갤러리 */}
@@ -173,11 +173,11 @@ const TitleWrapper = styled.div`
   .btn {
     display: inline-block;
     padding: 15rem 40rem;
-    margin-bottom: 48rem;
     border: ${({ theme }) => theme.borderColor};
     border-radius: 30rem;
     transition: box-shadow 0.8s, color 0.8s;
     &-wrap {
+      margin-bottom: 48rem;
       text-align: right;
     }
     &:hover {
